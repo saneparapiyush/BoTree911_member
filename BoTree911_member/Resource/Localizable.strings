@@ -1,0 +1,28 @@
+/*
+  Localizable.strings
+  Botree911
+
+  Created by piyushMac on 01/02/17.
+  Copyright © 2017 piyushMac. All rights reserved.
+*/
+
+"invalid_email" = "Enter valid email";//Email Validation message
+
+// Title of Pages
+"title_project_list" = "Project List";
+"title_project_info" = "Project Info";
+"title_ticket_list" = "Tickets";
+"title_add_ticket" = "Add Ticket";
+"title_edit_ticket" = "Ticket Info";
+
+
+// Progress Indicator
+"login_indicator" = "Please wait...";
+"project_list_indicator" = "Please wait...";
+"ticket_list_indicator" = "Please wait...";
+"status_list_indicator" = "Please wait...";
+"add_project_indicator" = "Please wait...";
+"update_project_indicator" = "Please wait...";
+"add_comment_indicator" = "Please wait...";
+"comment_list_indicator" = "Please wait...";
+"history_list_indicator" = "Please wait...";
