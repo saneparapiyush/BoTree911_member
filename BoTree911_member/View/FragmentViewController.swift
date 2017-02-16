@@ -17,7 +17,7 @@ class FragmentViewController: AbstractViewController,CarbonTabSwipeNavigationDel
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        items = ["Pending (2)", "InProgress (1)","Resolved (5)","Closed (3)","Unassigned (2)"]
+        items = ["Old", "Missed","Unresolved","Unassigned"]
         
         carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: items as [AnyObject], delegate: self)
         carbonTabSwipeNavigation.currentTabIndex = UInt(selectedIndex)
@@ -29,9 +29,6 @@ class FragmentViewController: AbstractViewController,CarbonTabSwipeNavigationDel
         
         title = getLocalizedString("title_ticket_list")
         
-        //For Add navigation bar button
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(btnAddOnClick))
-    
 //        NotificationCenter.default.addObserver(self, selector: #selector(FragmentViewController.switchTabs), name: NSNotification.Name(rawValue: "switchTabsNotification"), object: nil)
         
     }
@@ -94,15 +91,7 @@ class FragmentViewController: AbstractViewController,CarbonTabSwipeNavigationDel
         carbonTabSwipeNavigation.carbonSegmentedControl!.setWidth(self.view.frame.width / 3.5, forSegmentAt: 1)
         carbonTabSwipeNavigation.carbonSegmentedControl!.setWidth(self.view.frame.width / 3.5, forSegmentAt: 2)
         carbonTabSwipeNavigation.carbonSegmentedControl!.setWidth(self.view.frame.width / 3.5, forSegmentAt: 3)
-        carbonTabSwipeNavigation.carbonSegmentedControl!.setWidth(self.view.frame.width / 3.5, forSegmentAt: 4)
-        
-        
+                
         carbonTabSwipeNavigation.setNormalColor(UIColor.black.withAlphaComponent(0.6))
     }
-    
-    //    MARK:- Actions
-    func btnAddOnClick() {
-//        selectedTicket = nil
-        self.performSegue(withIdentifier: "showAddTicket", sender: self)
-    }// end btnAddOnClick()
 }

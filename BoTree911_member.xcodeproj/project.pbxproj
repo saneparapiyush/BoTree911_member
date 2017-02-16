@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		37C84E989AED4955EC7C21E3 /* Pods_BoTree911_memberTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68CB4EF1FCCDD1CCEFED2DA /* Pods_BoTree911_memberTests.framework */; };
 		4AF934C41E55B9E8005E1943 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF934C31E55B9E8005E1943 /* AppDelegate.swift */; };
-		4AF934C61E55B9E8005E1943 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF934C51E55B9E8005E1943 /* ViewController.swift */; };
 		4AF934C91E55B9E8005E1943 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AF934C71E55B9E8005E1943 /* Main.storyboard */; };
 		4AF934CB1E55B9E8005E1943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AF934CA1E55B9E8005E1943 /* Assets.xcassets */; };
 		4AF934CE1E55B9E8005E1943 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AF934CC1E55B9E8005E1943 /* LaunchScreen.storyboard */; };
@@ -42,13 +41,11 @@
 		4AF935381E55BC82005E1943 /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF935331E55BC82005E1943 /* ThemeButton.swift */; };
 		4AF935391E55BC82005E1943 /* ThemeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF935341E55BC82005E1943 /* ThemeLabel.swift */; };
 		4AF9353A1E55BC82005E1943 /* ThemeTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF935351E55BC82005E1943 /* ThemeTextfield.swift */; };
-		4AF935431E55BCA3005E1943 /* AddTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9353C1E55BCA3005E1943 /* AddTicketViewController.swift */; };
 		4AF935441E55BCA3005E1943 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9353D1E55BCA3005E1943 /* CommentViewController.swift */; };
 		4AF935451E55BCA3005E1943 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9353E1E55BCA3005E1943 /* HistoryViewController.swift */; };
 		4AF935461E55BCA3005E1943 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9353F1E55BCA3005E1943 /* LoginViewController.swift */; };
-		4AF935471E55BCA3005E1943 /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF935401E55BCA3005E1943 /* ProjectDetailViewController.swift */; };
-		4AF935481E55BCA3005E1943 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF935411E55BCA3005E1943 /* ProjectListViewController.swift */; };
 		4AF935491E55BCA3005E1943 /* TicketListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF935421E55BCA3005E1943 /* TicketListViewController.swift */; };
+		4AF9354C1E55DC15005E1943 /* TicketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9354B1E55DC15005E1943 /* TicketDetailViewController.swift */; };
 		5D2C60E909A4EB77483FC0BB /* Pods_BoTree911_memberUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2658E3E6DDB4F2D85A28E4ED /* Pods_BoTree911_memberUITests.framework */; };
 		D56ABB6042D68AC3E799DB9C /* Pods_BoTree911_member.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA3FEF91A048E4AD60D1A880 /* Pods_BoTree911_member.framework */; };
 /* End PBXBuildFile section */
@@ -76,7 +73,6 @@
 		2658E3E6DDB4F2D85A28E4ED /* Pods_BoTree911_memberUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoTree911_memberUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AF934C01E55B9E8005E1943 /* BoTree911_member.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoTree911_member.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AF934C31E55B9E8005E1943 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4AF934C51E55B9E8005E1943 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4AF934C81E55B9E8005E1943 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4AF934CA1E55B9E8005E1943 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AF934CD1E55B9E8005E1943 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -126,14 +122,12 @@
 		4AF935331E55BC82005E1943 /* ThemeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
 		4AF935341E55BC82005E1943 /* ThemeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeLabel.swift; sourceTree = "<group>"; };
 		4AF935351E55BC82005E1943 /* ThemeTextfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeTextfield.swift; sourceTree = "<group>"; };
-		4AF9353C1E55BCA3005E1943 /* AddTicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTicketViewController.swift; sourceTree = "<group>"; };
 		4AF9353D1E55BCA3005E1943 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		4AF9353E1E55BCA3005E1943 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		4AF9353F1E55BCA3005E1943 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		4AF935401E55BCA3005E1943 /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
-		4AF935411E55BCA3005E1943 /* ProjectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
 		4AF935421E55BCA3005E1943 /* TicketListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketListViewController.swift; sourceTree = "<group>"; };
 		4AF9354A1E55BEA0005E1943 /* BoTree911_member-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BoTree911_member-Bridging-Header.h"; sourceTree = "<group>"; };
+		4AF9354B1E55DC15005E1943 /* TicketDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketDetailViewController.swift; sourceTree = "<group>"; };
 		5369ED5BC245681C1366F555 /* Pods-BoTree911_memberTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoTree911_memberTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BoTree911_memberTests/Pods-BoTree911_memberTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A2DBF1EC926468A64F8B3BF0 /* Pods-BoTree911_memberUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoTree911_memberUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BoTree911_memberUITests/Pods-BoTree911_memberUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A68CB4EF1FCCDD1CCEFED2DA /* Pods_BoTree911_memberTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoTree911_memberTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,7 +200,6 @@
 				4AF9352B1E55BC4E005E1943 /* Service */,
 				4AF935301E55BC82005E1943 /* View */,
 				4AF9353B1E55BCA3005E1943 /* ViewController */,
-				4AF934C51E55B9E8005E1943 /* ViewController.swift */,
 				4AF934C71E55B9E8005E1943 /* Main.storyboard */,
 				4AF934CA1E55B9E8005E1943 /* Assets.xcassets */,
 				4AF934CC1E55B9E8005E1943 /* LaunchScreen.storyboard */,
@@ -319,11 +312,11 @@
 		4AF935301E55BC82005E1943 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4AF935311E55BC82005E1943 /* FragmentTicketDetailViewController.swift */,
-				4AF935321E55BC82005E1943 /* FragmentViewController.swift */,
-				4AF935331E55BC82005E1943 /* ThemeButton.swift */,
-				4AF935341E55BC82005E1943 /* ThemeLabel.swift */,
 				4AF935351E55BC82005E1943 /* ThemeTextfield.swift */,
+				4AF935341E55BC82005E1943 /* ThemeLabel.swift */,
+				4AF935331E55BC82005E1943 /* ThemeButton.swift */,
+				4AF935321E55BC82005E1943 /* FragmentViewController.swift */,
+				4AF935311E55BC82005E1943 /* FragmentTicketDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -332,12 +325,10 @@
 			isa = PBXGroup;
 			children = (
 				4AF9353F1E55BCA3005E1943 /* LoginViewController.swift */,
-				4AF9353C1E55BCA3005E1943 /* AddTicketViewController.swift */,
+				4AF9354B1E55DC15005E1943 /* TicketDetailViewController.swift */,
 				4AF935421E55BCA3005E1943 /* TicketListViewController.swift */,
 				4AF9353D1E55BCA3005E1943 /* CommentViewController.swift */,
 				4AF9353E1E55BCA3005E1943 /* HistoryViewController.swift */,
-				4AF935401E55BCA3005E1943 /* ProjectDetailViewController.swift */,
-				4AF935411E55BCA3005E1943 /* ProjectListViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -647,12 +638,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AF934C61E55B9E8005E1943 /* ViewController.swift in Sources */,
-				4AF935471E55BCA3005E1943 /* ProjectDetailViewController.swift in Sources */,
 				4AF935451E55BCA3005E1943 /* HistoryViewController.swift in Sources */,
 				4AF934F51E55BA9C005E1943 /* AbstractViewController.swift in Sources */,
 				4AF935261E55BBDD005E1943 /* leftMenuViewController.swift in Sources */,
 				4AF9352F1E55BC4E005E1943 /* ServiceManager.swift in Sources */,
+				4AF9354C1E55DC15005E1943 /* TicketDetailViewController.swift in Sources */,
 				4AF934FF1E55BB59005E1943 /* History.swift in Sources */,
 				4AF935371E55BC82005E1943 /* FragmentViewController.swift in Sources */,
 				4AF9351D1E55BBDD005E1943 /* CarbonSwipeRefresh.m in Sources */,
@@ -671,14 +661,12 @@
 				4AF934F71E55BA9D005E1943 /* AppRouter.swift in Sources */,
 				4AF935211E55BBDD005E1943 /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				4AF935441E55BCA3005E1943 /* CommentViewController.swift in Sources */,
-				4AF935481E55BCA3005E1943 /* ProjectListViewController.swift in Sources */,
 				4AF935231E55BBDD005E1943 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				4AF935011E55BB59005E1943 /* Ticket.swift in Sources */,
 				4AF935221E55BBDD005E1943 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				4AF9351F1E55BBDD005E1943 /* CarbonTabSwipeScrollView.m in Sources */,
 				4AF935491E55BCA3005E1943 /* TicketListViewController.swift in Sources */,
 				4AF934F61E55BA9D005E1943 /* AppConstant.swift in Sources */,
-				4AF935431E55BCA3005E1943 /* AddTicketViewController.swift in Sources */,
 				4AF935201E55BBDD005E1943 /* CarbonTabSwipeSegmentedControl.m in Sources */,
 				4AF935391E55BC82005E1943 /* ThemeLabel.swift in Sources */,
 				4AF935001E55BB59005E1943 /* Project.swift in Sources */,

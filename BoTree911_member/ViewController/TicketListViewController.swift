@@ -116,7 +116,7 @@ class TicketListViewController: AbstractViewController {
             commentVC.ticket = selectedTicket*/
             
         } else if segue.identifier == "showAddTicket" {
-            let addTicketVC = segue.destination as! AddTicketViewController
+            let addTicketVC = segue.destination as! TicketDetailViewController
             addTicketVC.project = project!
             addTicketVC.ticket = selectedTicket
 //          addTicketVC.title = getLocalizedString("title_add_ticket")

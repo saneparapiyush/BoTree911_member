@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appRouter.appWindow = window
         
         if UserDefaults.standard.value(forKey: "isLogin") != nil {
-            appRouter.showProjectScreen()
+            appRouter.showTicketListScreen()
         }
                 
         IQKeyboardManager.sharedManager().enable = true

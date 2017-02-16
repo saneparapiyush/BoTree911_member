@@ -55,14 +55,7 @@ extension FragmentViewController: SlideNavigationControllerDelegate {
     }
 }
 
-extension AddTicketViewController {
-    func slideNavigationControllerShouldDisplayLeftMenu() -> Bool
-    {
-        return true
-    }
-}
-
-extension ProjectListViewController: SlideNavigationControllerDelegate {
+extension TicketDetailViewController {
     func slideNavigationControllerShouldDisplayLeftMenu() -> Bool
     {
         return true

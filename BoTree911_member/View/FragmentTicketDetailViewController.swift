@@ -34,7 +34,7 @@ class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeN
         
         switch index {
         case 0:
-           let vc = AppRouter.sharedRouter().getViewController("AddTicketViewController") as! AddTicketViewController
+           let vc = AppRouter.sharedRouter().getViewController("TicketDetailViewController") as! TicketDetailViewController
             vc.project = project
             vc.ticket = ticket
             

@@ -102,498 +102,12 @@
                         <outlet property="btnLogin" destination="IsC-yo-DJG" id="OpO-K1-ZZf"/>
                         <outlet property="txtPassword" destination="EjY-rh-rk1" id="fFa-YC-XFq"/>
                         <outlet property="txtUserEmail" destination="v6Y-e4-S0N" id="hsU-Fv-lvl"/>
-                        <segue destination="JM7-84-tST" kind="show" identifier="showProjectList" id="WBJ-XG-VoX"/>
-                        <segue destination="ahO-0L-lOA" kind="show" identifier="showCreateTicket" id="4Kz-yV-yXs"/>
+                        <segue destination="cWl-v1-1xB" kind="show" identifier="showTicketList" id="7ec-hT-CCl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="962.39999999999998" y="33.733133433283363"/>
-        </scene>
-        <!--Project List View Controller-->
-        <scene sceneID="XTN-Lf-kJx">
-            <objects>
-                <viewController storyboardIdentifier="ProjectListViewController" id="JM7-84-tST" customClass="ProjectListViewController" customModule="BoTree911_member" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0Kn-OU-v50"/>
-                        <viewControllerLayoutGuide type="bottom" id="9MB-20-vJA"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="oi3-9F-bb1">
-                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="153" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Idk-Qs-q4w">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
-                                <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="sectionIndexBackgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProjectListCell" rowHeight="133" id="lkB-HR-sEo" customClass="ProjectListCell" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="133"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lkB-HR-sEo" id="ZGG-Ei-ZtR">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="133"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VRy-Lc-BWu">
-                                                    <rect key="frame" x="8" y="8" width="398" height="125"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fk-qB-QwE" customClass="ThemeLabelTitle" customModule="BoTree911_member" customModuleProvider="target">
-                                                            <rect key="frame" x="8" y="8" width="94" height="21"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="21" id="Lze-4t-dgC"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shardul Bhatt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urt-pr-p32" customClass="ThemeLabelDetail" customModule="BoTree911_member" customModuleProvider="target">
-                                                            <rect key="frame" x="8" y="33" width="124" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Feb 01, 2017" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RM-HC-epE" customClass="ThemeLabelDetail" customModule="BoTree911_member" customModuleProvider="target">
-                                                            <rect key="frame" x="293" y="8" width="97" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ticket Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoA-eW-WKh" customClass="ThemeLabelDetail" customModule="BoTree911_member" customModuleProvider="target">
-                                                            <rect key="frame" x="8" y="58" width="94" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7E-ri-r8H">
-                                                            <rect key="frame" x="320" y="87" width="70" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <state key="normal" title="Details">
-                                                                <color key="titleColor" red="0.0081677347652957342" green="0.039946114962969168" blue="0.89293749999999994" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </state>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l1s-ce-Cfu">
-                                                            <rect key="frame" x="212" y="87" width="100" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <state key="normal" title="All Tickets">
-                                                                <color key="titleColor" red="0.0081677347652957342" green="0.039946114962969168" blue="0.89293749999999994" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </state>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHo-sV-6sk">
-                                                            <rect key="frame" x="360" y="53" width="30" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" red="0.57254901960000004" green="0.7843137255" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <state key="normal" title="10">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <integer key="value" value="4"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XgL-M1-k6I">
-                                                            <rect key="frame" x="322" y="53" width="30" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" red="0.0081677347650000003" green="0.039946114960000001" blue="0.89293750000000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <state key="normal" title="12">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <integer key="value" value="4"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="few-Xp-4fV">
-                                                            <rect key="frame" x="284" y="53" width="30" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" red="1" green="0.40145836367503374" blue="0.11190436371569068" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <state key="normal" title="8">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <integer key="value" value="4"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfo-it-2jw">
-                                                            <rect key="frame" x="246" y="53" width="30" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <state key="normal" title="3">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <integer key="value" value="4"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </button>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="125" id="1lR-pf-1tp"/>
-                                                        <constraint firstItem="1Fk-qB-QwE" firstAttribute="top" secondItem="VRy-Lc-BWu" secondAttribute="top" constant="8" id="LRl-VQ-WCG"/>
-                                                        <constraint firstItem="1Fk-qB-QwE" firstAttribute="leading" secondItem="VRy-Lc-BWu" secondAttribute="leading" constant="8" id="ju0-4D-bVZ"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="VRy-Lc-BWu" firstAttribute="top" secondItem="ZGG-Ei-ZtR" secondAttribute="top" constant="8" id="OKX-9w-pv2"/>
-                                                <constraint firstAttribute="trailing" secondItem="VRy-Lc-BWu" secondAttribute="trailing" constant="8" id="df6-Sn-QVz"/>
-                                                <constraint firstItem="VRy-Lc-BWu" firstAttribute="leading" secondItem="ZGG-Ei-ZtR" secondAttribute="leading" constant="8" id="rwZ-z3-vXO"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="btnAllTicket" destination="l1s-ce-Cfu" id="hw7-hF-9qz"/>
-                                            <outlet property="btnDetail" destination="N7E-ri-r8H" id="aHe-vx-LbG"/>
-                                            <outlet property="btnStatus1" destination="JHo-sV-6sk" id="ZeO-fS-Hvl"/>
-                                            <outlet property="btnStatus2" destination="XgL-M1-k6I" id="zHV-aF-bPa"/>
-                                            <outlet property="btnStatus3" destination="few-Xp-4fV" id="uXj-3X-PMO"/>
-                                            <outlet property="btnStatus4" destination="hfo-it-2jw" id="sUY-I1-n5H"/>
-                                            <outlet property="lblProjectTitle" destination="1Fk-qB-QwE" id="7qP-oT-Trp"/>
-                                            <outlet property="lblSPOCPerson" destination="Urt-pr-p32" id="Wkv-c0-jhL"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="JM7-84-tST" id="ClF-eE-bJy"/>
-                                    <outlet property="delegate" destination="JM7-84-tST" id="t9e-95-LHH"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Idk-Qs-q4w" firstAttribute="top" secondItem="0Kn-OU-v50" secondAttribute="bottom" id="6hE-1E-4Wj"/>
-                            <constraint firstItem="9MB-20-vJA" firstAttribute="top" secondItem="Idk-Qs-q4w" secondAttribute="bottom" id="KkM-bN-cWw"/>
-                            <constraint firstItem="Idk-Qs-q4w" firstAttribute="leading" secondItem="oi3-9F-bb1" secondAttribute="leading" id="TqP-99-mCf"/>
-                            <constraint firstAttribute="trailing" secondItem="Idk-Qs-q4w" secondAttribute="trailing" id="caz-bc-4if"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="tblProjectList" destination="Idk-Qs-q4w" id="3FF-Tx-oKc"/>
-                        <segue destination="cWl-v1-1xB" kind="show" identifier="showTicketList" id="Oa7-R1-Zef"/>
-                        <segue destination="ifZ-pO-Cf1" kind="show" identifier="showProjectDetail" id="jBc-Og-JLA"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yPW-lq-14z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1691.304347826087" y="33.423913043478265"/>
-        </scene>
-        <!--Project Detail View Controller-->
-        <scene sceneID="DtM-fa-YHz">
-            <objects>
-                <viewController storyboardIdentifier="ProjectDetailViewController" id="ifZ-pO-Cf1" customClass="ProjectDetailViewController" customModule="BoTree911_member" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Lz5-Dc-Th5"/>
-                        <viewControllerLayoutGuide type="bottom" id="6Cj-ZJ-vDE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ajr-OR-Jjq">
-                        <rect key="frame" x="0.0" y="64" width="414" height="713"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZDV-TI-oCf">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="713"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Project Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pw0-pw-tpr" customClass="ThemeLabelTitle" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="16" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order Management System" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITE-vx-piC" customClass="ThemeLabelDetail" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="45" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feR-cC-l7G">
-                                        <rect key="frame" x="8" y="74" width="398" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Project Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSa-vD-fZ0" customClass="ThemeLabelTitle" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="83" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77W-2K-ZhK" customClass="ThemeLabelDetail" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="112" width="398" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJ1-fe-sRA">
-                                        <rect key="frame" x="8" y="176" width="398" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5W-Cz-cgf" customClass="ThemeLabelTitle" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="185" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Feb 10,2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOM-71-U6T" customClass="ThemeLabelDetail" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="214" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4Z-PC-WIq">
-                                        <rect key="frame" x="8" y="243" width="398" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Resources" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueO-5a-fV7" customClass="ThemeLabelTitle" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="252" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lorem ipsum dolor sit er elit lamet, consectetaur." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WG4-rp-6hX" customClass="ThemeLabelDetail" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="281" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGk-vu-C4S">
-                                        <rect key="frame" x="8" y="310" width="398" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SPOC Person" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4A-E8-CwS" customClass="ThemeLabelTitle" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="319" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shardul Bhatt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sh-yL-w1P" customClass="ThemeLabelDetail" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="348" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8KW-gw-k3G">
-                                        <rect key="frame" x="8" y="377" width="398" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Team Members" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozf-Jb-Hey" customClass="ThemeLabelTitle" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="386" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRd-x6-bJR" customClass="ThemeLabelDetail" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="415" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uum-Td-elD">
-                                        <rect key="frame" x="8" y="444" width="398" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ticket Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVP-If-cME" customClass="ThemeLabelTitle" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="453" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvV-BN-jaL">
-                                        <rect key="frame" x="95" y="482" width="25" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.5568627451" green="0.7843137255" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="4"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1P-rn-b4V">
-                                        <rect key="frame" x="66" y="482" width="25" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.0081677347650000003" green="0.039946114960000001" blue="0.89293750000000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="4"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dt-hL-BWc">
-                                        <rect key="frame" x="37" y="482" width="25" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="0.64478449910000002" blue="0.21187577569999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="4"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRE-07-mzH">
-                                        <rect key="frame" x="8" y="482" width="25" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="4"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1R-S5-IiA">
-                                        <rect key="frame" x="8" y="511" width="398" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Project Manager" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXn-VC-DRV" customClass="ThemeLabelTitle" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="520" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nipun Brahmbhatt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAv-ud-Fve" customClass="ThemeLabelDetail" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="549" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Wu-i1-aOq">
-                                        <rect key="frame" x="8" y="578" width="398" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Team Leader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfZ-hJ-uyE" customClass="ThemeLabelTitle" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="587" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bhavin Nattar, Piyush Sanepara" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHq-z4-wpo" customClass="ThemeLabelDetail" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="616" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TB-er-7GS">
-                                        <rect key="frame" x="8" y="645" width="398" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I96-Oa-8P9" customClass="ThemeLabelTitle" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="654" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rahul Sadhu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cov-LG-tzL" customClass="ThemeLabelDetail" customModule="BoTree911_member" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="683" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <connections>
-                                    <outlet property="delegate" destination="ifZ-pO-Cf1" id="0FS-aA-dnF"/>
-                                </connections>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="777"/>
-                    <connections>
-                        <outlet property="scrlView" destination="ZDV-TI-oCf" id="eaN-KQ-hIp"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="J3Y-AE-vyy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1689.8550724637682" y="745.51630434782612"/>
+            <point key="canvasLocation" x="429" y="29"/>
         </scene>
         <!--Fragment View Controller-->
         <scene sceneID="SMY-zT-zBv">
@@ -608,13 +122,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <segue destination="ahO-0L-lOA" kind="show" identifier="showAddTicket" id="vmW-8j-cGl"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IjI-wu-adQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2429" y="33"/>
+            <point key="canvasLocation" x="1157" y="32"/>
         </scene>
         <!--Ticket List View Controller-->
         <scene sceneID="UMa-HD-dsx">
@@ -833,9 +344,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TXV-h5-5oG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3241" y="33"/>
+            <point key="canvasLocation" x="1852" y="32"/>
         </scene>
-        <!--HISTORY-->
+        <!--History View Controller-->
         <scene sceneID="y54-f2-Md1">
             <objects>
                 <viewController storyboardIdentifier="HistoryViewController" id="Vdv-vE-YtY" customClass="HistoryViewController" customModule="BoTree911_member" customModuleProvider="target" sceneMemberID="viewController">
@@ -933,89 +444,80 @@
                             <constraint firstAttribute="trailing" secondItem="WUN-qe-zri" secondAttribute="trailing" id="myk-GO-zVD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="HISTORY" id="6nO-Xt-gUP">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-16"/>
-                    </tabBarItem>
                     <connections>
                         <outlet property="tblHistoryList" destination="WUN-qe-zri" id="MXW-UO-ANa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esQ-0S-mbJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4869.375" y="32.74647887323944"/>
+            <point key="canvasLocation" x="3354" y="41"/>
         </scene>
-        <!--DETAIL-->
+        <!--Ticket Detail View Controller-->
         <scene sceneID="oOF-I2-JnE">
             <objects>
-                <viewController storyboardIdentifier="AddTicketViewController" id="ahO-0L-lOA" customClass="AddTicketViewController" customModule="BoTree911_member" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TicketDetailViewController" id="ahO-0L-lOA" customClass="TicketDetailViewController" customModule="BoTree911_member" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xMK-3V-mfM"/>
                         <viewControllerLayoutGuide type="bottom" id="IGY-Wu-Jxw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SfK-Nu-A9z">
-                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdw-Pa-Z6m" customClass="ThemeLabelDetail" customModule="BoTree911_member" customModuleProvider="target">
-                                <rect key="frame" x="16" y="8" width="382" height="21"/>
+                                <rect key="frame" x="16" y="28" width="382" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Project" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YYN-71-qWq" customClass="ThemeTextField" customModule="BoTree911_member" customModuleProvider="target">
-                                <rect key="frame" x="16" y="37" width="382" height="40"/>
+                                <rect key="frame" x="16" y="57" width="382" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="XSR-ar-SzK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="ahO-0L-lOA" id="eVz-FG-Ggt"/>
-                                </connections>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issue Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmJ-iW-oeh" customClass="ThemeLabelDetail" customModule="BoTree911_member" customModuleProvider="target">
-                                <rect key="frame" x="16" y="93" width="382" height="21"/>
+                                <rect key="frame" x="16" y="113" width="382" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Status" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w3y-YA-RBx" customClass="ThemeTextField" customModule="BoTree911_member" customModuleProvider="target">
-                                <rect key="frame" x="16" y="122" width="382" height="40"/>
+                                <rect key="frame" x="16" y="142" width="328" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="i2e-df-Pdm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="ahO-0L-lOA" id="IVw-Mr-79V"/>
+                                    <outlet property="delegate" destination="ahO-0L-lOA" id="G0X-D1-OGP"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summery*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUu-Q1-ajq" customClass="ThemeLabelDetail" customModule="BoTree911_member" customModuleProvider="target">
-                                <rect key="frame" x="16" y="178" width="382" height="21"/>
+                                <rect key="frame" x="16" y="198" width="382" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JbV-pf-tAT" customClass="ThemeTextField" customModule="BoTree911_member" customModuleProvider="target">
-                                <rect key="frame" x="16" y="207" width="382" height="40"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JbV-pf-tAT" customClass="ThemeTextField" customModule="BoTree911_member" customModuleProvider="target">
+                                <rect key="frame" x="16" y="227" width="382" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Vp2-nR-iaG"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="ahO-0L-lOA" id="HzH-zh-LFJ"/>
-                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dS-6W-l7t" customClass="ThemeLabelDetail" customModule="BoTree911_member" customModuleProvider="target">
-                                <rect key="frame" x="16" y="263" width="382" height="18"/>
+                                <rect key="frame" x="16" y="283" width="382" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="aPd-cY-abU" customClass="ThemeTextView" customModule="BoTree911_member" customModuleProvider="target">
-                                <rect key="frame" x="16" y="289" width="382" height="90"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="aPd-cY-abU" customClass="ThemeTextView" customModule="BoTree911_member" customModuleProvider="target">
+                                <rect key="frame" x="16" y="309" width="382" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="rkc-LA-jpN"/>
                                 </constraints>
@@ -1023,37 +525,34 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozb-ab-EfM" customClass="ThemeButton" customModule="BoTree911_member" customModuleProvider="target">
-                                <rect key="frame" x="16" y="439" width="382" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZP-3F-IOR">
+                                <rect key="frame" x="352" y="142" width="46" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Zga-Qu-MpI"/>
+                                    <constraint firstAttribute="height" constant="40" id="EMZ-f3-KHu"/>
+                                    <constraint firstAttribute="width" constant="46" id="kta-ek-P0Y"/>
                                 </constraints>
-                                <state key="normal" title="Create"/>
-                                <connections>
-                                    <action selector="btnCreateTicketOnClick:" destination="ahO-0L-lOA" eventType="touchUpInside" id="isw-eS-Km1"/>
-                                </connections>
+                                <state key="normal" title="Edit"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="dmJ-iW-oeh" firstAttribute="leading" secondItem="YYN-71-qWq" secondAttribute="leading" id="0Pf-ST-lNk"/>
                             <constraint firstItem="pUu-Q1-ajq" firstAttribute="top" secondItem="w3y-YA-RBx" secondAttribute="bottom" constant="16" id="3IO-xE-v22"/>
-                            <constraint firstItem="ozb-ab-EfM" firstAttribute="leading" secondItem="w3y-YA-RBx" secondAttribute="leading" id="5sJ-SD-5yD"/>
+                            <constraint firstItem="TZP-3F-IOR" firstAttribute="top" secondItem="w3y-YA-RBx" secondAttribute="top" id="5tR-eR-uzU"/>
+                            <constraint firstItem="TZP-3F-IOR" firstAttribute="leading" secondItem="w3y-YA-RBx" secondAttribute="trailing" constant="8" id="7gL-XZ-ql1"/>
                             <constraint firstItem="JbV-pf-tAT" firstAttribute="top" secondItem="pUu-Q1-ajq" secondAttribute="bottom" constant="8" id="7vx-Ez-eJr"/>
-                            <constraint firstItem="w3y-YA-RBx" firstAttribute="trailing" secondItem="JbV-pf-tAT" secondAttribute="trailing" id="88E-1B-Kgd"/>
                             <constraint firstItem="YYN-71-qWq" firstAttribute="trailing" secondItem="JbV-pf-tAT" secondAttribute="trailing" id="Adq-5k-vMJ"/>
                             <constraint firstItem="7dS-6W-l7t" firstAttribute="trailing" secondItem="JbV-pf-tAT" secondAttribute="trailing" id="Aw2-n5-vau"/>
-                            <constraint firstItem="ozb-ab-EfM" firstAttribute="trailing" secondItem="JbV-pf-tAT" secondAttribute="trailing" id="C3V-JW-p2Q"/>
                             <constraint firstAttribute="trailing" secondItem="JbV-pf-tAT" secondAttribute="trailing" constant="16" id="Cdi-XH-14D"/>
                             <constraint firstItem="YYN-71-qWq" firstAttribute="top" secondItem="Rdw-Pa-Z6m" secondAttribute="bottom" constant="8" id="FLN-J0-mQx"/>
                             <constraint firstItem="dmJ-iW-oeh" firstAttribute="trailing" secondItem="YYN-71-qWq" secondAttribute="trailing" id="GD2-vl-leU"/>
                             <constraint firstItem="YYN-71-qWq" firstAttribute="trailing" secondItem="Rdw-Pa-Z6m" secondAttribute="trailing" id="MLA-pe-R9D"/>
                             <constraint firstItem="w3y-YA-RBx" firstAttribute="top" secondItem="dmJ-iW-oeh" secondAttribute="bottom" constant="8" id="MUr-q4-1Ku"/>
+                            <constraint firstItem="JbV-pf-tAT" firstAttribute="trailing" secondItem="pUu-Q1-ajq" secondAttribute="trailing" id="OGo-JT-tep"/>
                             <constraint firstItem="7dS-6W-l7t" firstAttribute="leading" secondItem="JbV-pf-tAT" secondAttribute="leading" id="UKF-Dv-mdA"/>
                             <constraint firstItem="YYN-71-qWq" firstAttribute="leading" secondItem="JbV-pf-tAT" secondAttribute="leading" id="YOx-zI-NeX"/>
                             <constraint firstItem="aPd-cY-abU" firstAttribute="leading" secondItem="JbV-pf-tAT" secondAttribute="leading" id="bac-N9-fwf"/>
                             <constraint firstItem="JbV-pf-tAT" firstAttribute="leading" secondItem="SfK-Nu-A9z" secondAttribute="leading" constant="16" id="bvE-Ml-ODj"/>
-                            <constraint firstItem="ozb-ab-EfM" firstAttribute="top" secondItem="aPd-cY-abU" secondAttribute="bottom" constant="60" id="c55-aZ-Pw8"/>
                             <constraint firstItem="pUu-Q1-ajq" firstAttribute="trailing" secondItem="w3y-YA-RBx" secondAttribute="trailing" id="eCx-fm-hpw"/>
                             <constraint firstItem="pUu-Q1-ajq" firstAttribute="leading" secondItem="w3y-YA-RBx" secondAttribute="leading" id="eWR-TL-fWJ"/>
                             <constraint firstItem="w3y-YA-RBx" firstAttribute="leading" secondItem="JbV-pf-tAT" secondAttribute="leading" id="fWA-cA-nbU"/>
@@ -1063,28 +562,28 @@
                             <constraint firstItem="Rdw-Pa-Z6m" firstAttribute="top" secondItem="xMK-3V-mfM" secondAttribute="bottom" constant="8" id="lOJ-3f-EZs"/>
                             <constraint firstItem="aPd-cY-abU" firstAttribute="top" secondItem="7dS-6W-l7t" secondAttribute="bottom" constant="8" id="lXi-9q-YNE"/>
                             <constraint firstItem="7dS-6W-l7t" firstAttribute="top" secondItem="JbV-pf-tAT" secondAttribute="bottom" constant="16" id="m2n-Yl-jEa"/>
+                            <constraint firstItem="TZP-3F-IOR" firstAttribute="trailing" secondItem="pUu-Q1-ajq" secondAttribute="trailing" id="rXk-wA-RfA"/>
                             <constraint firstItem="aPd-cY-abU" firstAttribute="trailing" secondItem="JbV-pf-tAT" secondAttribute="trailing" id="yzx-TL-Daa"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="eCx-fm-hpw"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="DETAIL" id="Nc0-zp-46x">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-16"/>
-                    </tabBarItem>
                     <connections>
-                        <outlet property="btnCreateTicket" destination="ozb-ab-EfM" id="OHN-5B-1sE"/>
-                        <outlet property="constraintTop" destination="hbR-cQ-kEP" id="V5l-rU-b8G"/>
-                        <outlet property="lblDescription" destination="7dS-6W-l7t" id="jLZ-6q-5nP"/>
-                        <outlet property="lblIssueType" destination="dmJ-iW-oeh" id="I5w-W9-5QO"/>
-                        <outlet property="lblSummery" destination="pUu-Q1-ajq" id="6tR-iR-xFV"/>
-                        <outlet property="txtSelectProject" destination="YYN-71-qWq" id="sUW-Bn-ivj"/>
-                        <outlet property="txtSelectStatus" destination="w3y-YA-RBx" id="D1w-OF-wtY"/>
-                        <outlet property="txtTitleName" destination="JbV-pf-tAT" id="0IW-1v-JoU"/>
-                        <outlet property="txtViewDescription" destination="aPd-cY-abU" id="NGo-eG-FFo"/>
-                        <segue destination="cWl-v1-1xB" kind="show" identifier="showTicketScreenFromAddScreen" id="7Gj-lB-q8U"/>
+                        <outlet property="lblDescription" destination="7dS-6W-l7t" id="qhR-Rp-uVN"/>
+                        <outlet property="lblIssueType" destination="dmJ-iW-oeh" id="1ug-yV-lut"/>
+                        <outlet property="lblSummery" destination="pUu-Q1-ajq" id="5HA-gc-XHR"/>
+                        <outlet property="txtSelectProject" destination="YYN-71-qWq" id="ku8-n1-2KS"/>
+                        <outlet property="txtSelectStatus" destination="w3y-YA-RBx" id="GAz-xG-U3o"/>
+                        <outlet property="txtTitleName" destination="JbV-pf-tAT" id="ONe-XX-xM8"/>
+                        <outlet property="txtViewDescription" destination="aPd-cY-abU" id="P1K-su-RIv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iqg-vW-hQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4870" y="-611"/>
+            <point key="canvasLocation" x="3354" y="-655"/>
         </scene>
         <!--Fragment Ticket Detail View Controller-->
         <scene sceneID="DzT-Ar-C17">
@@ -1102,7 +601,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3uE-de-fVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4041" y="33"/>
+            <point key="canvasLocation" x="2628" y="41"/>
         </scene>
         <!--Slide Navigation Controller-->
         <scene sceneID="ltd-p3-oy4">
@@ -1125,9 +624,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mGb-nX-abY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="257" y="34"/>
+            <point key="canvasLocation" x="-320" y="29"/>
         </scene>
-        <!--COMMENTS-->
+        <!--Comment View Controller-->
         <scene sceneID="wYZ-2M-Lb0">
             <objects>
                 <viewController storyboardIdentifier="CommentViewController" id="0du-kP-Hra" customClass="CommentViewController" customModule="BoTree911_member" customModuleProvider="target" sceneMemberID="viewController">
@@ -1254,9 +753,6 @@
                             <constraint firstItem="zAl-pL-GsW" firstAttribute="top" secondItem="i5R-bB-muv" secondAttribute="top" id="yfd-nR-wfw"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="COMMENTS" id="jD5-fe-gde">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-16"/>
-                    </tabBarItem>
                     <connections>
                         <outlet property="tblCommentList" destination="EAS-q1-A7n" id="93B-yt-0fp"/>
                         <outlet property="txtAddComment" destination="i5R-bB-muv" id="qW9-fO-Yr9"/>
@@ -1264,7 +760,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLV-W8-ETp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4869.5652173913049" y="696.19565217391312"/>
+            <point key="canvasLocation" x="3354" y="749"/>
         </scene>
         <!--Left Menu View Controller-->
         <scene sceneID="Ju9-yv-SHz">
@@ -1407,7 +903,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lfx-Md-rxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1689.8550724637682" y="-611.41304347826087"/>
+            <point key="canvasLocation" x="1157" y="-655"/>
         </scene>
     </scenes>
     <resources>
@@ -1416,11 +912,7 @@
         <image name="clock" width="20" height="20"/>
         <image name="comment" width="20" height="20"/>
         <image name="profile" width="50" height="50"/>
-        <image name="send" width="35" height="35"/>
+        <image name="send" width="30" height="30"/>
         <image name="splash_image" width="300" height="77"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="7Gj-lB-q8U"/>
-        <segue reference="4Kz-yV-yXs"/>
-    </inferredMetricsTieBreakers>
 </document>
