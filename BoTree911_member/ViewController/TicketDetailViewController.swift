@@ -22,33 +22,21 @@ class TicketDetailViewController: AbstractViewController {
     @IBOutlet var lblDescription: ThemeLabelDetail!
     @IBOutlet var txtViewDescription: UITextView!
 
+    @IBOutlet var btnEdit: UIButton!
     
     var picker = UIPickerView()
     var ticketStatus = [TicketStatus]()
     var projectListSource = [Project]()
     var ddProjectId: Int?
     
-    var project: Project?
     var selectedStatus: TicketStatus?
     
     var ticket: Ticket?
-    var isEdit: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.setHidesBackButton(true, animated: true)
-        if (ticket != nil) {
-            isEdit = true
-            lblIssueType.isHidden = false
-            txtSelectStatus.isHidden = false
-        } else {
-            isEdit = false
-            title = getLocalizedString("title_add_ticket")
-            
-            lblIssueType.isHidden = true
-            txtSelectStatus.isHidden = true
-        }
         
         configUI()
         
@@ -65,7 +53,6 @@ class TicketDetailViewController: AbstractViewController {
         FTProgressIndicator.showProgressWithmessage(getLocalizedString("status_list_indicator"), userInteractionEnable: false)
         
         getStatusList()
-        getProjectList()
         self.dismissIndicator()
         picker.dataSource = self
         picker.delegate = self
@@ -126,36 +113,15 @@ class TicketDetailViewController: AbstractViewController {
         //        }
         
         //        txtSelectStatus.text = (isEdit)! ? (ticket?.status) : (arrStatus.allKeys(for: 1)[0] as! String)
-        if ticketStatus.count > 1 {
-            txtSelectStatus.isEnabled = true
-        }
         
-        txtSelectStatus.text = (isEdit)! ? (ticket?.status) : ticketStatus[0].ticket_status_name
+        txtSelectStatus.text = ticket?.status
     } // End procssGetResponceProjectList
-    
-    func getProjectList() {
-        
-        let serviceManager = ServiceManager()
-        
-        serviceManager.getProjectList { (success, error, json) in
-            if success {
-                self.projectListSource = json!
-                
-                if self.projectListSource.count > 1 {
-                    self.txtSelectProject.isEnabled = true
-                }
-            } else {
-                print(error!)
-                self.configToast(message: error!)
-            }
-        }
-    } // End getProjectList()
     
     func editTicket() {
         
         let parameters = [
             "ticket": [
-                "project_id": project!.id!,
+                "project_id": selectedProject!.id!,
                 "name": "\(txtTitleName.text!)",
                 "status": selectedStatus!.status_value!,
                 "description": "\(txtViewDescription.text!)"
@@ -202,29 +168,44 @@ class TicketDetailViewController: AbstractViewController {
     
     func configUI() {
         
+        txtSelectProject.text = selectedProject.name
+        
         txtViewDescription.textContainerInset = UIEdgeInsetsMake(10, 10, 10, 10)
+        
         lblSummery.colorChangeForLastCharacter()
         lblDescription.colorChangeForLastCharacter()
         
         picker = UIPickerView(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 216.0))
         picker.backgroundColor = UIColor.white
         
-        //        txtSelectProject.addRightSubView()
-        //        txtSelectStatus.addRightSubView()
-        
-        txtSelectProject.inputView = picker
         txtSelectStatus.inputView = picker
         
-        if isEdit! {
-            txtTitleName.text = ticket!.name
-            txtViewDescription.text = ticket!.description
-            txtSelectStatus.text = ticket!.status
-        }
+        txtTitleName.text = ticket!.name
+        txtViewDescription.text = ticket!.description
+        txtSelectStatus.text = ticket!.status
     }// End configUI()
     
     func configToast(message: String) {
-        self.isEdit! ? self.tabBarController?.view.makeToast(message) : self.view.makeToast(message)
+        
+//        self.isEdit! ? self.view.makeToast(message) : self.view.makeToast(message)
     }//End configToast()
+//MARK: - ACTION
+    
+    @IBAction func btnEditOnClick(_ sender: Any) {
+        
+        if btnEdit.currentTitle == "Save" {//Button Save Click
+            btnEdit.setTitle("", for: .normal)
+            btnEdit.setImage(UIImage(named: "edit"), for: .normal)
+            
+            txtSelectStatus.isEnabled = false
+        } else {//Button Edit Click
+            btnEdit.setTitle("Save", for: .normal)
+            btnEdit.setImage(nil, for: .normal)
+            
+            txtSelectStatus.isEnabled = true
+        }
+        
+    }// End btnEditOnClick()
 }
 
 //MARK: - PICKER

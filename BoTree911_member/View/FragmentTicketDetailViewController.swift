@@ -8,12 +8,13 @@
 
 import UIKit
 
-class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeNavigationDelegate {
+class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeNavigationDelegate,UITextFieldDelegate {
     
     var items = NSArray()
     var carbonTabSwipeNavigation: CarbonTabSwipeNavigation = CarbonTabSwipeNavigation()
-    var project: Project?
     var ticket: Ticket?
+    
+    var selectedIndex = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +22,15 @@ class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeN
         items = ["Details", "History","Comment"]
         
         carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: items as [AnyObject], delegate: self)
+        carbonTabSwipeNavigation.currentTabIndex = UInt(selectedIndex)
         carbonTabSwipeNavigation.insert(intoRootViewController: self)
         
         style()
         
-        //        carbonTabSwipeNavigation.carbonSegmentedControl?.selectedSegmentIndex = 3
+        //For Add navigation bar button
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Time", style: .plain, target: self, action: #selector(btnLogTimeOnClick))
+        
+//        carbonTabSwipeNavigation.carbonSegmentedControl?.selectedSegmentIndex = 3
 //        carbonTabSwipeNavigation.currentTabIndex = UInt(selectedIndex)
         
 //        title = getLocalizedString("title_ticket_list")
@@ -35,7 +40,6 @@ class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeN
         switch index {
         case 0:
            let vc = AppRouter.sharedRouter().getViewController("TicketDetailViewController") as! TicketDetailViewController
-            vc.project = project
             vc.ticket = ticket
             
             return vc
@@ -76,5 +80,36 @@ class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeN
         
         
         carbonTabSwipeNavigation.setNormalColor(UIColor.black.withAlphaComponent(0.6))
+    }
+    
+    //    MARK:- Actions
+    func btnLogTimeOnClick() {
+        
+        let alert = UIAlertController(title: "Log Time(Hour)", message: "Please enter Log Time", preferredStyle: .alert)
+        
+        alert.addTextField { textField in
+            textField.delegate = self
+            textField.text = ""
+            textField.placeholder = "Log Time(Hour)"
+            textField.keyboardType = .numbersAndPunctuation
+        }
+        
+        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+            print("Text field: \(textField?.text)")
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }// end btnAddOnClick()
+}
+extension FragmentTicketDetailViewController {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let cs = CharacterSet(charactersIn: ACCEPTABLE_CHARACTERS).inverted
+        
+        let filtered: String = (string.components(separatedBy: cs) as NSArray).componentsJoined(by: "")
+        return (string == filtered)
     }
 }

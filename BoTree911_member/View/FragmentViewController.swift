@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Toast
+import SwiftyJSON
 
 class FragmentViewController: AbstractViewController,CarbonTabSwipeNavigationDelegate {
 
@@ -14,6 +16,10 @@ class FragmentViewController: AbstractViewController,CarbonTabSwipeNavigationDel
     var carbonTabSwipeNavigation: CarbonTabSwipeNavigation = CarbonTabSwipeNavigation()
     var selectedIndex = Int()
 
+    var picker = UIPickerView()
+    var projectListSource = [Project]()
+    let txtNavigationTitle = UITextField()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,14 +33,18 @@ class FragmentViewController: AbstractViewController,CarbonTabSwipeNavigationDel
         
 //        carbonTabSwipeNavigation.carbonSegmentedControl?.selectedSegmentIndex = 3
         
-        title = getLocalizedString("title_ticket_list")
+//        title = getLocalizedString("title_ticket_list")
+        configNavigationTitle()
+        configPicker()
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(FragmentViewController.switchTabs), name: NSNotification.Name(rawValue: "switchTabsNotification"), object: nil)
+        //            MARK: OFLINE
+        //        getProjectList()
+        setOflineDataSource()
+        picker.dataSource = self
+        picker.delegate = self
+        //            MARK: END OFLINE
         
     }
-//    func switchTabs() {
-//        carbonTabSwipeNavigation.currentTabIndex = UInt(selectedIndex)
-//    }
     
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
         
@@ -93,5 +103,135 @@ class FragmentViewController: AbstractViewController,CarbonTabSwipeNavigationDel
         carbonTabSwipeNavigation.carbonSegmentedControl!.setWidth(self.view.frame.width / 3.5, forSegmentAt: 3)
                 
         carbonTabSwipeNavigation.setNormalColor(UIColor.black.withAlphaComponent(0.6))
+    }
+    
+    func configNavigationTitle() {
+        txtNavigationTitle.frame = CGRect(x: 0, y: 0, width: 150, height: 40)
+        txtNavigationTitle.placeholder = "Select Project"
+        txtNavigationTitle.textAlignment = .center
+        txtNavigationTitle.delegate = self
+        txtNavigationTitle.textColor = UIColor.white
+        txtNavigationTitle.tintColor = UIColor.clear
+        
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 40))
+        
+        let imgdropDown = UIImageView(frame: CGRect(x: 110, y: 0, width: 40, height: 40))
+        imgdropDown.image = UIImage(named: "drop_down")
+        imgdropDown.contentMode = .center
+        
+        view.addSubview(imgdropDown)
+        view.addSubview(txtNavigationTitle)
+        
+        self.navigationItem.titleView = view
+    }
+    
+    func configPicker() {
+        picker = UIPickerView(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 216.0))
+        picker.backgroundColor = UIColor.white
+        txtNavigationTitle.inputView = picker
+    }
+    
+//    MARK:- Helper Method
+    
+    func getProjectList() {
+        
+        let serviceManager = ServiceManager()
+        
+        serviceManager.getProjectList { (success, error, json) in
+            if success {
+                self.projectListSource = json!
+                selectedProject = self.projectListSource[0]
+                
+//                if self.projectListSource.count > 1 {
+//                    self.txtSelectProject.isEnabled = true
+//                }
+            } else {
+                print(error!)
+                self.view.makeToast(error!)
+            }
+        }
+    } // End getProjectList()
+}
+
+//MARK: - PICKER
+extension FragmentViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        return projectListSource.count
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+//            project = projectListSource[row]
+        
+        selectedProject = projectListSource[row]
+        txtNavigationTitle.text = projectListSource[row].name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = UILabel()
+        label.textColor = UIColor.black
+        label.font = UIFont(name: "Helvetica", size: 18)
+        label.textAlignment = NSTextAlignment.center
+        
+        label.text = projectListSource[row].name
+        return label
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField)
+    {
+        picker.selectRow(0, inComponent: 0, animated: true)
+        picker.reloadAllComponents()
+    }
+}
+
+extension FragmentViewController {
+    
+    func setOflineDataSource() {
+        
+        let params = [
+            "status": true,
+            "data": [
+                "projects": [
+                    [
+                        "id": 1,
+                        "name": "BoTree911",
+                        "start_date":"Jan 10,2017",
+                        "total_member": 5
+                    ],
+                    [
+                        "id": 2,
+                        "name": "InspectDate",
+                        "start_date":"Jan 10,2017",
+                        "total_member": 5
+                    ]
+                ]
+            ]
+            ] as Any
+        
+        let json = JSON(params)
+        processGetResponceProjectList(json: json["data"])
+    }
+    
+    func processGetResponceProjectList(json: JSON) {
+        
+        let projects = json["projects"]
+        
+        for i in 0 ..< projects.count {
+            let jsonValue = projects.arrayValue[i]
+            let projectDetail = Project(json: jsonValue)
+            projectListSource.append(projectDetail)
+        }
+//        
+//        if projectListSource.count > 1 {
+//            txtSelectProject.isEnabled = true
+//        }
+        
+        selectedProject = projectListSource[0]
+        txtNavigationTitle.text = selectedProject.name
     }
 }

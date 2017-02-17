@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		37C84E989AED4955EC7C21E3 /* Pods_BoTree911_memberTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68CB4EF1FCCDD1CCEFED2DA /* Pods_BoTree911_memberTests.framework */; };
+		4AE467011E57103C00EFA823 /* NGOPassCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE467001E57103B00EFA823 /* NGOPassCodeView.swift */; };
+		4AE467031E57118900EFA823 /* LogTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE467021E57118900EFA823 /* LogTimeViewController.swift */; };
 		4AF934C41E55B9E8005E1943 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF934C31E55B9E8005E1943 /* AppDelegate.swift */; };
 		4AF934C91E55B9E8005E1943 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AF934C71E55B9E8005E1943 /* Main.storyboard */; };
 		4AF934CB1E55B9E8005E1943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AF934CA1E55B9E8005E1943 /* Assets.xcassets */; };
@@ -71,6 +73,8 @@
 		0661122FA31659558AB8A163 /* Pods-BoTree911_memberTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoTree911_memberTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BoTree911_memberTests/Pods-BoTree911_memberTests.release.xcconfig"; sourceTree = "<group>"; };
 		25B7B34BD26AA13C0014993D /* Pods-BoTree911_member.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoTree911_member.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BoTree911_member/Pods-BoTree911_member.debug.xcconfig"; sourceTree = "<group>"; };
 		2658E3E6DDB4F2D85A28E4ED /* Pods_BoTree911_memberUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoTree911_memberUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AE467001E57103B00EFA823 /* NGOPassCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NGOPassCodeView.swift; sourceTree = "<group>"; };
+		4AE467021E57118900EFA823 /* LogTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTimeViewController.swift; sourceTree = "<group>"; };
 		4AF934C01E55B9E8005E1943 /* BoTree911_member.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoTree911_member.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AF934C31E55B9E8005E1943 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AF934C81E55B9E8005E1943 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -241,6 +245,7 @@
 		4AF935021E55BBDD005E1943 /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				4AE467001E57103B00EFA823 /* NGOPassCodeView.swift */,
 				4AF935031E55BBDD005E1943 /* CarbonKit */,
 				4AF9350D1E55BBDD005E1943 /* SlideMenu */,
 			);
@@ -329,6 +334,7 @@
 				4AF935421E55BCA3005E1943 /* TicketListViewController.swift */,
 				4AF9353D1E55BCA3005E1943 /* CommentViewController.swift */,
 				4AF9353E1E55BCA3005E1943 /* HistoryViewController.swift */,
+				4AE467021E57118900EFA823 /* LogTimeViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -662,6 +668,7 @@
 				4AF935211E55BBDD005E1943 /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				4AF935441E55BCA3005E1943 /* CommentViewController.swift in Sources */,
 				4AF935231E55BBDD005E1943 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
+				4AE467031E57118900EFA823 /* LogTimeViewController.swift in Sources */,
 				4AF935011E55BB59005E1943 /* Ticket.swift in Sources */,
 				4AF935221E55BBDD005E1943 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				4AF9351F1E55BBDD005E1943 /* CarbonTabSwipeScrollView.m in Sources */,
@@ -669,6 +676,7 @@
 				4AF934F61E55BA9D005E1943 /* AppConstant.swift in Sources */,
 				4AF935201E55BBDD005E1943 /* CarbonTabSwipeSegmentedControl.m in Sources */,
 				4AF935391E55BC82005E1943 /* ThemeLabel.swift in Sources */,
+				4AE467011E57103C00EFA823 /* NGOPassCodeView.swift in Sources */,
 				4AF935001E55BB59005E1943 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
