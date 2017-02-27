@@ -15,7 +15,7 @@ struct ComunicateService {
 //    static let KeyName2 = "KeyName2"
     
     enum Router: URLRequestConvertible {
-        static let baseURLString = "http://192.168.0.134:3000/"
+        static let baseURLString = "http://192.168.0.86:3000/"
         static var OAuthToken: String?
         
         case SignIn(Parameters)
@@ -27,6 +27,11 @@ struct ComunicateService {
         case AddComment(Parameters,Int)
         case CommentList(Int)
         case HistoryList(Int)
+        case NotificationList()
+        case ForgotPassword(Parameters)
+        case PassTicket(Int)
+        case LogTime(Parameters,Int)
+        case AcceptTicket(Int)
         
         var method: Alamofire.HTTPMethod {
             switch self {
@@ -48,6 +53,16 @@ struct ComunicateService {
                     return .get
                 case .HistoryList(_):
                     return .get
+                case .NotificationList():
+                    return .get
+                case .ForgotPassword(_):
+                    return .post
+                case .PassTicket(_):
+                    return .get
+                case .LogTime(_):
+                    return .post
+                case .AcceptTicket(_):
+                    return .get
             }
         }
         
@@ -60,7 +75,7 @@ struct ComunicateService {
                 case .StatusList( _):
                     return "tickets/status_list"
                 case .TicketList(_):
-                    return "tickets/list"
+                    return "tickets/member_ticket_list"
                 case .CreateTicket(_):
                     return "tickets"
                 case .EditTicket(_, let ticketID):
@@ -71,6 +86,16 @@ struct ComunicateService {
                     return "tickets/\(ticketID)/ticket_comments"
                 case .HistoryList(let ticketID):
                     return "tickets/\(ticketID)/ticket_status_history"
+                case .NotificationList():
+                    return "users/notification"
+                case .ForgotPassword(_):
+                    return "users/reset_password"
+                case .PassTicket(let ticketID):
+                    return "tickets/\(ticketID)/pass_ticket"
+                case .LogTime(_, let ticketID):
+                    return "tickets/\(ticketID)/add_log_time"
+                case .AcceptTicket(let ticketID):
+                    return "tickets/\(ticketID)/accept_ticket"
             }
         }
 
@@ -118,6 +143,21 @@ struct ComunicateService {
                 return try Alamofire.URLEncoding.default.encode(urlRequest, with: nil)
             
             case .HistoryList(_):
+                return try Alamofire.URLEncoding.default.encode(urlRequest, with: nil)
+                
+            case .NotificationList():
+                return try Alamofire.URLEncoding.default.encode(urlRequest, with: nil)
+            
+            case .ForgotPassword(let params):
+                return try Alamofire.JSONEncoding.default.encode(urlRequest, with: params)
+                
+            case .PassTicket(_):
+                return try Alamofire.URLEncoding.default.encode(urlRequest, with: nil)
+                
+            case .LogTime(let params,_):
+                return try Alamofire.JSONEncoding.default.encode(urlRequest, with: params)
+                
+            case .AcceptTicket(_):
                 return try Alamofire.URLEncoding.default.encode(urlRequest, with: nil)
                 
             default:

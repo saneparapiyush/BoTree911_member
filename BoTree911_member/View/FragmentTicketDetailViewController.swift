@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FTProgressIndicator
+import Alamofire
+import SwiftyJSON
 
 class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeNavigationDelegate,UITextFieldDelegate {
     
@@ -15,6 +18,9 @@ class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeN
     var ticket: Ticket?
     
     var selectedIndex = Int()
+    
+    var selectedStatusId = UInt()// For Unassignee
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +33,10 @@ class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeN
         
         style()
         
-        //For Add navigation bar button
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Time", style: .plain, target: self, action: #selector(btnLogTimeOnClick))
+        
+        if selectedStatusId != 3 {// Hidden for Unassignee
+            configUnassignee()
+        }
         
 //        carbonTabSwipeNavigation.carbonSegmentedControl?.selectedSegmentIndex = 3
 //        carbonTabSwipeNavigation.currentTabIndex = UInt(selectedIndex)
@@ -41,6 +49,7 @@ class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeN
         case 0:
            let vc = AppRouter.sharedRouter().getViewController("TicketDetailViewController") as! TicketDetailViewController
             vc.ticket = ticket
+            vc.selectedStatusId = selectedStatusId
             
             return vc
             
@@ -82,6 +91,11 @@ class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeN
         carbonTabSwipeNavigation.setNormalColor(UIColor.black.withAlphaComponent(0.6))
     }
     
+    func configUnassignee() {
+        //For Add navigation bar button
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Time", style: .plain, target: self, action: #selector(btnLogTimeOnClick))
+    }
+    
     //    MARK:- Actions
     func btnLogTimeOnClick() {
         
@@ -90,13 +104,18 @@ class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeN
         alert.addTextField { textField in
             textField.delegate = self
             textField.text = ""
-            textField.placeholder = "Log Time(Hour)"
+            textField.placeholder = "e.g. 3.5 or 4"
             textField.keyboardType = .numbersAndPunctuation
         }
         
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
             print("Text field: \(textField?.text)")
+            
+            if let n = NumberFormatter().number(from: (textField?.text)!) {
+                self.AddLogTimeOnClick(logTime: CGFloat(n))
+            }
+            
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -104,6 +123,46 @@ class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeN
         self.present(alert, animated: true, completion: nil)
         
     }// end btnAddOnClick()
+    
+    func AddLogTimeOnClick(logTime : CGFloat) {
+        
+        let parameters = [
+            "ticket": [
+                "description": logTime
+            ]
+        ]
+        
+        FTProgressIndicator.showProgressWithmessage(getLocalizedString("logtime_indicator"), userInteractionEnable: false)
+        
+        do {
+            try Alamofire.request(ComunicateService.Router.LogTime(parameters, (ticket!.id)!).asURLRequest()).debugLog().responseJSON(options: [JSONSerialization.ReadingOptions.allowFragments, JSONSerialization.ReadingOptions.mutableContainers])
+            {
+                (response) -> Void in
+                
+                switch response.result
+                {
+                case .success:
+                    if let value = response.result.value
+                    {
+                        let json = JSON(value)
+                        print("Log Time Response: \(json)")
+
+                        self.configToast(message: "\((json.dictionaryObject!["message"])!)")
+                    }
+                    self.dismissIndicator()
+                    
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self.dismissIndicator()
+                    self.configToast(message: error.localizedDescription)
+                }
+            }
+        } catch let error{
+            print(error.localizedDescription)
+            self.dismissIndicator()
+            self.configToast(message: error.localizedDescription)
+        }
+    }
 }
 extension FragmentTicketDetailViewController {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

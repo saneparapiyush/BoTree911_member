@@ -10,15 +10,16 @@ import SwiftyJSON
 
 class Comment {
     var id: Int?
+    var user_id: Int?
     var user_name: String?
     var comment: String?
     var date_time: String?
     
     init(json: JSON) {
         id = json.dictionaryObject!["id"] as? Int
+        user_id = json.dictionaryObject!["user_id"] as? Int
         user_name = json.dictionaryObject!["user_name"] as? String
         comment = json.dictionaryObject!["comment"] as? String
-        date_time = json.dictionaryObject!["date_time"] as? String        
+        date_time = json.dictionaryObject!["date_time"] as? String
     }
 }
-

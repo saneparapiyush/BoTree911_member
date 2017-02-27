@@ -17,12 +17,13 @@ class TicketDetailViewController: AbstractViewController {
     @IBOutlet var txtSelectProject: UITextField!
     @IBOutlet var lblIssueType: ThemeLabelDetail!
     @IBOutlet var txtSelectStatus: UITextField!
-    @IBOutlet var lblSummery: ThemeLabelDetail!
+    @IBOutlet var lblsummary: ThemeLabelDetail!
     @IBOutlet var txtTitleName: ThemeTextField!
     @IBOutlet var lblDescription: ThemeLabelDetail!
     @IBOutlet var txtViewDescription: UITextView!
 
     @IBOutlet var btnEdit: UIButton!
+    @IBOutlet var btnPassTicket: ThemeButton!
     
     var picker = UIPickerView()
     var ticketStatus = [TicketStatus]()
@@ -33,16 +34,19 @@ class TicketDetailViewController: AbstractViewController {
     
     var ticket: Ticket?
     
+    var selectedStatusId = UInt() // For Unassignee
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.setHidesBackButton(true, animated: true)
         
         configUI()
+        configUIUnassignee()
         
         //            MARK: OFLINE
-        //        getDropDownData()
-        setOflineDataSource()
+                getDropDownData()
+//        setOflineDataSource()
         picker.dataSource = self
         picker.delegate = self
         //            MARK: END OFLINE
@@ -50,10 +54,10 @@ class TicketDetailViewController: AbstractViewController {
     }// End viewDidLoad()
     
     func getDropDownData() {
-        FTProgressIndicator.showProgressWithmessage(getLocalizedString("status_list_indicator"), userInteractionEnable: false)
+//        FTProgressIndicator.showProgressWithmessage(getLocalizedString("status_list_indicator"), userInteractionEnable: false)
         
         getStatusList()
-        self.dismissIndicator()
+//        self.dismissIndicator()
         picker.dataSource = self
         picker.delegate = self
     }//End getDropDownData()
@@ -105,7 +109,10 @@ class TicketDetailViewController: AbstractViewController {
         for i in 0 ..< ticketStat.count {
             let jsonValue = ticketStat.arrayValue[i]
             let ticketStatusDetail = TicketStatus(json: jsonValue)
-            ticketStatus.append(ticketStatusDetail)
+    
+            if ticketStatusDetail.status_value! != 4 { // Hide Close Status 
+                ticketStatus.append(ticketStatusDetail)
+            }
         }
         
         //        for (key, value) in projects as! JSON {
@@ -121,10 +128,11 @@ class TicketDetailViewController: AbstractViewController {
         
         let parameters = [
             "ticket": [
-                "project_id": selectedProject!.id!,
+                "project_id": selectedProject!.project_id!,
                 "name": "\(txtTitleName.text!)",
                 "status": selectedStatus!.status_value!,
-                "description": "\(txtViewDescription.text!)"
+                "description": "\(txtViewDescription.text!)",
+                "holder_type":"developer"
             ]
         ]
         
@@ -166,13 +174,79 @@ class TicketDetailViewController: AbstractViewController {
         }
     }//End editTicket()
     
+    func passTicket() {
+        
+        FTProgressIndicator.showProgressWithmessage(getLocalizedString("pass_ticket_indicator"), userInteractionEnable: false)
+        do {
+            try Alamofire.request(ComunicateService.Router.PassTicket((ticket!.id)!).asURLRequest()).debugLog().responseJSON(options: [JSONSerialization.ReadingOptions.allowFragments, JSONSerialization.ReadingOptions.mutableContainers])
+            {
+                (response) -> Void in
+                
+                switch response.result
+                {
+                case .success:
+                    if let value = response.result.value
+                    {
+                        let json = JSON(value)
+                        print("Pass Ticket Response: \(json)")
+                        
+                        self.configToast(message: "\((json.dictionaryObject!["message"])!)")
+                        
+                        self.dismissIndicator()
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self.dismissIndicator()
+                    self.configToast(message: error.localizedDescription)
+                }
+            }
+        } catch let error{
+            print(error)
+            self.dismissIndicator()
+            self.configToast(message: error.localizedDescription)
+        }
+    } // End passTicket()
+    
+    func acceptTicket() {
+        
+        FTProgressIndicator.showProgressWithmessage(getLocalizedString("accept_ticket_indicator"), userInteractionEnable: false)
+        do {
+            try Alamofire.request(ComunicateService.Router.AcceptTicket((ticket!.id)!).asURLRequest()).debugLog().responseJSON(options: [JSONSerialization.ReadingOptions.allowFragments, JSONSerialization.ReadingOptions.mutableContainers])
+            {
+                (response) -> Void in
+                
+                switch response.result
+                {
+                case .success:
+                    if let value = response.result.value
+                    {
+                        let json = JSON(value)
+                        print("Accept Ticket Response: \(json)")
+                        
+                        self.configToast(message: "\((json.dictionaryObject!["message"])!)")
+                        
+                        self.dismissIndicator()
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self.dismissIndicator()
+                    self.configToast(message: error.localizedDescription)
+                }
+            }
+        } catch let error{
+            print(error)
+            self.dismissIndicator()
+            self.configToast(message: error.localizedDescription)
+        }
+    } // End acceptTicket()
+    
     func configUI() {
         
         txtSelectProject.text = selectedProject.name
         
         txtViewDescription.textContainerInset = UIEdgeInsetsMake(10, 10, 10, 10)
         
-        lblSummery.colorChangeForLastCharacter()
+        lblsummary.colorChangeForLastCharacter()
         lblDescription.colorChangeForLastCharacter()
         
         picker = UIPickerView(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 216.0))
@@ -185,10 +259,12 @@ class TicketDetailViewController: AbstractViewController {
         txtSelectStatus.text = ticket!.status
     }// End configUI()
     
-    func configToast(message: String) {
-        
-//        self.isEdit! ? self.view.makeToast(message) : self.view.makeToast(message)
-    }//End configToast()
+    func configUIUnassignee() {
+        if selectedStatusId == 3 { // Hidden for Unassignee
+            btnPassTicket.setTitle("Accept Ticket", for: .normal)
+        }
+    }
+    
 //MARK: - ACTION
     
     @IBAction func btnEditOnClick(_ sender: Any) {
@@ -198,6 +274,9 @@ class TicketDetailViewController: AbstractViewController {
             btnEdit.setImage(UIImage(named: "edit"), for: .normal)
             
             txtSelectStatus.isEnabled = false
+            
+            editTicket()
+            
         } else {//Button Edit Click
             btnEdit.setTitle("Save", for: .normal)
             btnEdit.setImage(nil, for: .normal)
@@ -206,6 +285,17 @@ class TicketDetailViewController: AbstractViewController {
         }
         
     }// End btnEditOnClick()
+    
+    @IBAction func btnPassTicketOnClick(_ sender: Any) {
+        
+        if btnPassTicket.title(for: .normal) == "Accept Ticket" {
+            acceptTicket()
+        } else {
+            passTicket()
+        }
+        
+    }// End btnPassTicketOnClick(0
+    
 }
 
 //MARK: - PICKER

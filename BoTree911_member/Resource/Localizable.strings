@@ -26,3 +26,9 @@
 "add_comment_indicator" = "Please wait...";
 "comment_list_indicator" = "Please wait...";
 "history_list_indicator" = "Please wait...";
+"notification_list_indicator" = "Please wait...";
+"forgot_password_indicator" = "Please wait...";
+"pass_ticket_indicator" = "Please wait...";
+"accept_ticket_indicator" = "Please wait...";
+"logtime_indicator" = "Please wait...";
+

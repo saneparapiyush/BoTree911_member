@@ -11,9 +11,20 @@ import UIKit
 class leftMenuViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
 {
     @IBOutlet var tblView: UITableView!
+    @IBOutlet var lblUserName: UILabel!
+    @IBOutlet var lblEmail: UILabel!
     
     let dsTitle = ["Tickets","Unassigned Tickets","Notifications","Logout"]
     let dsMenuImage = [UIImage(named: "ticket"),UIImage(named: "unassign"),UIImage(named: "notification"),UIImage(named: "logout")]
+    
+    override func viewDidLoad() {
+        let fname = (UserDefaults.standard.value(forKey: "user")! as AnyObject)["first_name"] as? String
+        let lname = (UserDefaults.standard.value(forKey: "user")! as AnyObject)["last_name"] as? String
+        
+        lblUserName.text = getUserName(fName: fname!,lName: lname!)
+        lblEmail.text = (UserDefaults.standard.value(forKey: "user")! as AnyObject)["email"] as? String
+    }
+
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -63,7 +74,7 @@ class leftMenuViewController: UIViewController,UITableViewDataSource,UITableView
             
         case 1:// Unassigned Tickets
             let vc = AppRouter.sharedRouter().getViewController("FragmentViewController") as! FragmentViewController
-            vc.selectedIndex = 4
+            vc.selectedIndex = 3
 
             SlideNavigationController.sharedInstance().pushViewController(vc, animated: false)
                        
@@ -71,9 +82,10 @@ class leftMenuViewController: UIViewController,UITableViewDataSource,UITableView
             break
         
         case 2:// Notifications
-            let vc = AppRouter.sharedRouter().getViewController("FragmentViewController") as! FragmentViewController
+            let vc = AppRouter.sharedRouter().getViewController("NotificationViewController") as! NotificationViewController
             
-            navigateView(to: vc)
+            SlideNavigationController.sharedInstance().pushViewController(vc, animated: false)
+            //            navigateView(to: vc)0
             break
             
         case 3:// Logout

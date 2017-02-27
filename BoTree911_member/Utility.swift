@@ -13,6 +13,9 @@ func getLocalizedString(_ localizedKey: String) -> String {
     return NSLocalizedString(localizedKey, comment: "")
 }
 
+func getUserName(fName: String, lName: String) -> String{
+    return fName + " " + lName
+}
 
 extension UITextField {
     func addRightSubView() {
@@ -43,6 +46,29 @@ extension String {
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
         
         return boundingBox.height
+    }
+    
+    func dateFormatting() -> String {// For Converting date to our own format
+        
+        let formatterDate = DateFormatter()
+        formatterDate.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let dateFormat = formatterDate.date(from: self)
+        
+        let formatterString = DateFormatter()
+        formatterString.dateFormat = "MM-dd-yyyy"
+        return formatterString.string(from: dateFormat!)
+    }
+}
+
+//  MARK: UIButton Enable Disale Configution
+extension UIButton {
+    func isEnableConfig() {
+        self.alpha = 1.0
+        self.isEnabled = true
+    }
+    func isDisableConfig() {
+        self.alpha = 0.5
+        self.isEnabled = false
     }
 }
 

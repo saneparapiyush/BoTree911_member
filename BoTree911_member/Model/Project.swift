@@ -7,7 +7,7 @@
 //
 
 import SwiftyJSON
-
+/*
 class Project {
     var id: Int?
     var name: String?
@@ -35,7 +35,18 @@ class Project {
         ticket_status_value = json.dictionaryObject!["team_member"] as? [TicketStatus]
         start_date = json.dictionaryObject!["start_date"] as? String
     }
+}*/
+
+class Project {
+    var project_id: Int?
+    var name: String?
+    
+    init(json: JSON) {
+        project_id = json.dictionaryObject!["project_id"] as? Int
+        name = json.dictionaryObject!["name"] as? String
+    }
 }
+
 
 class Client {
     var client_name: String?

@@ -17,6 +17,7 @@ class TicketListViewController: AbstractViewController {
     var ticketListSource = [Ticket]()
     var selectedTicket : Ticket?
     
+    var selectedStatusId = UInt()
     @IBOutlet var tblTicketList: UITableView!
     
     override func viewDidLoad() {
@@ -30,11 +31,11 @@ class TicketListViewController: AbstractViewController {
 
         //            MARK: OFLINE
         //        getTicketList()
-        setOflineDataSource()
+//        setOflineDataSource()
         //            MARK: END OFLINE
         
     }// End viewDidAppear()
-
+/*
 //    MARK:- Helper Method
 
     func getTicketList() {
@@ -88,7 +89,7 @@ class TicketListViewController: AbstractViewController {
             ticketListSource.append(ticketDetail)
         }
         tblTicketList.reloadData()
-    }// End procssGetResponceProjectList
+    }// End procssGetResponceProjectList*/
     
 //    MARK:- Actions
 
@@ -107,7 +108,6 @@ class TicketListViewController: AbstractViewController {
         self.performSegue(withIdentifier: "showTicketInfo", sender: self)
     } //End btnCommentOnClick()
     
-    
     //    MARK: Prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showTicketInfo" {
@@ -116,6 +116,7 @@ class TicketListViewController: AbstractViewController {
 //            fragmentControll.project = selectedProject
             fragmentControll.ticket = selectedTicket
             fragmentControll.selectedIndex = selectedIndexForHistoryComment
+            fragmentControll.selectedStatusId = selectedStatusId
             
             /*let destinationVC = tabCtrl.viewControllers![0] as! AddTicketViewController
             destinationVC.project = project
@@ -185,8 +186,11 @@ class TicketListCell: UITableViewCell {
     func setTicketListData() {
         lblTicketTitle.text = ticket?.name
         lblTicketDescription.text = ticket?.description
-        lblDate.text = ticket?.updated_at
+        lblDate.text = ticket?.created_at?.dateFormatting()
+        
         lblAssingee.text = ticket?.assingee
+        btnComment.setTitle("\(ticket!.comment_count!)", for: .normal)
+        btnHistory.setTitle("\(ticket!.history_count!)", for: .normal)
     }
     
     func configView() {
@@ -194,12 +198,13 @@ class TicketListCell: UITableViewCell {
         viewMain.layer.borderWidth = 1.0
         viewMain.layer.borderColor = themeTextBorderColor.cgColor
         
-        btnComment.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
-        btnHistory.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+        btnComment.titleEdgeInsets = UIEdgeInsetsMake(0, 2, 0, 0);
+        btnHistory.titleEdgeInsets = UIEdgeInsetsMake(0, 2, 0, 0);
+        
     }
 }
 
-
+/*
 extension TicketListViewController {
     
     func setOflineDataSource() {
@@ -236,4 +241,4 @@ extension TicketListViewController {
         let json = JSON(params)
         self.processGetResponceTicketList(json: json["data"])
     }
-}
+}*/

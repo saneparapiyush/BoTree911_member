@@ -11,15 +11,13 @@ import SwiftyJSON
 class History {
     var id: Int?
     var user_name: String?
-    var last_status: String?
-    var current_status: String?
     var date_time: String?
+    var body: String?
     
-    init(json: JSON) {
+    init(json: JSON,bodyData: String) {
         id = json.dictionaryObject!["id"] as? Int
         user_name = json.dictionaryObject!["user_name"] as? String
-        last_status = json.dictionaryObject!["last_status"] as? String
-        current_status = json.dictionaryObject!["current_status"] as? String
         date_time = json.dictionaryObject!["date_time"] as? String
+        body = bodyData
     }
 }

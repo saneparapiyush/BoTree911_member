@@ -29,6 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
         IQKeyboardManager.sharedManager().enable = true
         
+//        let alideAndFadeAnimator = SlideNavigationContorllerAnimatorScaleAndFade(maximumFadeAlpha: 0.8, fade: nil, andMinimumScale: 0.95)
+//        let animator2 = SlideNavigationContorllerAnimatorSlideAndFade(maximumFadeAlpha: 0.8, fade: themeColor, andSlideMovement: 0.95)
+//        SlideNavigationController.sharedInstance().menuRevealAnimator = animator2
+        
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
         let leftMenu = mainStoryboard.instantiateViewController(withIdentifier: "leftMenuViewController") as! leftMenuViewController

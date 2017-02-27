@@ -16,29 +16,38 @@ class CommentViewController: AbstractViewController {
 
     @IBOutlet var tblCommentList: UITableView!
     @IBOutlet var txtAddComment: UITextField!
+    @IBOutlet var btnAddComment: UIButton!
     
     var ticket: Ticket?
     var commentListSource = [Comment]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         
+        btnAddComment.isDisableConfig()
+        NotificationCenter.default.addObserver(self, selector: #selector(textChanged(sender:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
     }// End viewDidLoad()
 
     override func viewWillAppear(_ animated: Bool) {
         
         //            MARK: OFLINE
-        //        getCommentList()
-        setOflineDataSource()
+                getCommentList()
+//        setOflineDataSource()
         //            MARK: END OFLINE
         
     }//End viewWillAppear()
     
 //    MARK: - Action
     @IBAction func btnAddCommentOnClick(_ sender: Any) {
-        addComment()
+        
+        if txtAddComment.hasText {
+            addComment()
+            txtAddComment.text = nil
+            txtAddComment.resignFirstResponder()
+            btnAddComment.isDisableConfig()
+        } else {
+            configToast(message: "Please add Comment")
+        }
     }// End btnAddCommentOnClick()
     
 //    MARK:- Helper Method
@@ -50,7 +59,7 @@ class CommentViewController: AbstractViewController {
             ]
         ]
 
-        FTProgressIndicator.showProgressWithmessage(getLocalizedString("add_comment_indicator"), userInteractionEnable: false)
+//        FTProgressIndicator.showProgressWithmessage(getLocalizedString("add_comment_indicator"), userInteractionEnable: false)
         
         do {
             try Alamofire.request(ComunicateService.Router.AddComment(parameters, (ticket!.id)!).asURLRequest()).debugLog().responseJSON(options: [JSONSerialization.ReadingOptions.allowFragments, JSONSerialization.ReadingOptions.mutableContainers])
@@ -69,17 +78,17 @@ class CommentViewController: AbstractViewController {
                             self.getCommentList()
                         }
                     }
-                    self.dismissIndicator()
+//                    self.dismissIndicator()
                     
                 case .failure(let error):
                     print(error.localizedDescription)
-                    self.dismissIndicator()
+//                    self.dismissIndicator()
                     self.view.makeToast(error.localizedDescription)
                 }
             }
-        } catch let error{
+        } catch let error {
             print(error.localizedDescription)
-            self.dismissIndicator()
+//            self.dismissIndicator()
             self.view.makeToast(error.localizedDescription)
         }
     }//End addComment()
@@ -136,9 +145,25 @@ class CommentViewController: AbstractViewController {
             commentListSource.append(commentDetail)
         }
         
+        commentListSource.reverse()
         tblCommentList.reloadData()
+        
+        let oldLastCellIndexPath = IndexPath(row: commentListSource.count - 1, section: 0)
+        
+        self.tblCommentList.scrollToRow(at: oldLastCellIndexPath, at: .bottom, animated: false)
+        
         completionHandler()
     }// End processGetResponceCommentList
+    
+    //    MARK: add Comment Button Enable
+    func textChanged(sender: NSNotification) {
+        if txtAddComment.hasText {
+            btnAddComment.isEnableConfig()
+        }
+        else {
+            btnAddComment.isDisableConfig()
+        }
+    }
 }
 
 extension CommentViewController: UITableViewDataSource,UITableViewDelegate {
@@ -152,13 +177,15 @@ extension CommentViewController: UITableViewDataSource,UITableViewDelegate {
         
         cell.comment = commentListSource[indexPath.row]
         
-        cell.setCellView()
         cell.setProjectListData()
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if indexPath.row == commentListSource.count - 1 {
+//            return UITableViewAutomaticDimension + 8
+//        }
         return UITableViewAutomaticDimension
     }
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -188,13 +215,21 @@ class CommentListCell: UITableViewCell {
         
         lblCommenterName.text = comment?.user_name
         lblComment.text = comment?.comment
-        lblCommentDateTime.text = comment?.date_time
+        lblCommentDateTime.text = comment?.date_time?.dateFormatting()
+        
+        setCellView()
     }
     
     func setCellView() {
-        if comment!.user_name! == "piyush" { // change condition based on user detail
-            constraintLead.constant = 100
+        
+        print((UserDefaults.standard.value(forKey: "user")! as AnyObject)["user_id"] as! Int)
+        
+        if comment!.user_id! == (UserDefaults.standard.value(forKey: "user")! as AnyObject)["user_id"] as! Int { // change condition based on user detail
+            constraintLead.constant = 60
             constraintTrail.constant = 8
+        } else {
+            constraintLead.constant = 8
+            constraintTrail.constant = 60
         }
     }
 }

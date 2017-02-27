@@ -11,3 +11,4 @@
 
 #import "SlideNavigationController.h"// Slide Menu
 #import "SlideNavigationContorllerAnimatorSlideAndFade.h"// Slide Menu
+#import "SlideNavigationContorllerAnimatorScaleAndFade.h"

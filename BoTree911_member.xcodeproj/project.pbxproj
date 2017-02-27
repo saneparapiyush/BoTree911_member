@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		37C84E989AED4955EC7C21E3 /* Pods_BoTree911_memberTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68CB4EF1FCCDD1CCEFED2DA /* Pods_BoTree911_memberTests.framework */; };
+		4A32260B1E5DB132008671F3 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32260A1E5DB132008671F3 /* NotificationViewController.swift */; };
+		4A32260D1E5DB1D1008671F3 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32260C1E5DB1D1008671F3 /* Notification.swift */; };
 		4AE467011E57103C00EFA823 /* NGOPassCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE467001E57103B00EFA823 /* NGOPassCodeView.swift */; };
 		4AE467031E57118900EFA823 /* LogTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE467021E57118900EFA823 /* LogTimeViewController.swift */; };
 		4AF934C41E55B9E8005E1943 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF934C31E55B9E8005E1943 /* AppDelegate.swift */; };
@@ -73,6 +75,8 @@
 		0661122FA31659558AB8A163 /* Pods-BoTree911_memberTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoTree911_memberTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BoTree911_memberTests/Pods-BoTree911_memberTests.release.xcconfig"; sourceTree = "<group>"; };
 		25B7B34BD26AA13C0014993D /* Pods-BoTree911_member.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoTree911_member.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BoTree911_member/Pods-BoTree911_member.debug.xcconfig"; sourceTree = "<group>"; };
 		2658E3E6DDB4F2D85A28E4ED /* Pods_BoTree911_memberUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoTree911_memberUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A32260A1E5DB132008671F3 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		4A32260C1E5DB1D1008671F3 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		4AE467001E57103B00EFA823 /* NGOPassCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NGOPassCodeView.swift; sourceTree = "<group>"; };
 		4AE467021E57118900EFA823 /* LogTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTimeViewController.swift; sourceTree = "<group>"; };
 		4AF934C01E55B9E8005E1943 /* BoTree911_member.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoTree911_member.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +242,7 @@
 				4AF934FB1E55BB59005E1943 /* History.swift */,
 				4AF934FC1E55BB59005E1943 /* Project.swift */,
 				4AF934FD1E55BB59005E1943 /* Ticket.swift */,
+				4A32260C1E5DB1D1008671F3 /* Notification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -334,6 +339,7 @@
 				4AF935421E55BCA3005E1943 /* TicketListViewController.swift */,
 				4AF9353D1E55BCA3005E1943 /* CommentViewController.swift */,
 				4AF9353E1E55BCA3005E1943 /* HistoryViewController.swift */,
+				4A32260A1E5DB132008671F3 /* NotificationViewController.swift */,
 				4AE467021E57118900EFA823 /* LogTimeViewController.swift */,
 			);
 			path = ViewController;
@@ -654,6 +660,7 @@
 				4AF9351D1E55BBDD005E1943 /* CarbonSwipeRefresh.m in Sources */,
 				4AF935381E55BC82005E1943 /* ThemeButton.swift in Sources */,
 				4AF9352E1E55BC4E005E1943 /* ComunicateService.swift in Sources */,
+				4A32260B1E5DB132008671F3 /* NotificationViewController.swift in Sources */,
 				4AF934F81E55BA9D005E1943 /* Utility.swift in Sources */,
 				4AF935271E55BBDD005E1943 /* SlideNavigationController.m in Sources */,
 				4AF935461E55BCA3005E1943 /* LoginViewController.swift in Sources */,
@@ -663,6 +670,7 @@
 				4AF934FE1E55BB59005E1943 /* Comment.swift in Sources */,
 				4AF934C41E55B9E8005E1943 /* AppDelegate.swift in Sources */,
 				4AF935361E55BC82005E1943 /* FragmentTicketDetailViewController.swift in Sources */,
+				4A32260D1E5DB1D1008671F3 /* Notification.swift in Sources */,
 				4AF935241E55BBDD005E1943 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				4AF934F71E55BA9D005E1943 /* AppRouter.swift in Sources */,
 				4AF935211E55BBDD005E1943 /* SlideNavigationContorllerAnimatorFade.m in Sources */,

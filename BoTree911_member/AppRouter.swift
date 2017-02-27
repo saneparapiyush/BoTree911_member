@@ -41,7 +41,7 @@ class AppRouter: NSObject, Controller {
     // MARK: - Screen Navigation Methods -
     
     func showTicketListScreen() {
-        let ticketListVC = getViewController("TicketListViewController") as? TicketListViewController
+        let ticketListVC = getViewController("FragmentViewController") as? FragmentViewController
         
         ticketListVC!.controller = self
         ticketListVC!.screenType = .TICKET_LIST_SCREEN_TYPE

@@ -14,9 +14,11 @@ class Ticket {
     var name: String?
     var description: String?
     var status: String?
-    var updated_at: String?
+    var created_at: String?
     var raised_by: String?
     var assingee: String?
+    var comment_count: Int?
+    var history_count: Int?
     
     init(json: JSON) {
         id = json.dictionaryObject!["id"] as? Int
@@ -24,15 +26,19 @@ class Ticket {
         name = json.dictionaryObject!["name"] as? String
         description = json.dictionaryObject!["description"] as? String
         status = json.dictionaryObject!["status"] as? String
-        updated_at = json.dictionaryObject!["updated_at"] as? String
+        created_at = json.dictionaryObject!["created_at"] as? String
         raised_by = json.dictionaryObject!["raised_by"] as? String
         
-        if ((json.dictionaryObject!["assingee"] as? String) != nil) {
-            assingee = json.dictionaryObject!["assingee"] as? String
-        } else {
-            assingee = "Pending..."
-        }
+//        if ((json.dictionaryObject!["assingee"] as? String) != nil) {
+//            assingee = json.dictionaryObject!["assingee"] as? String
+//        } else {
+//            assingee = "Pending..."
+//        }
         
+        ((json.dictionaryObject!["assingee"] as? String) != nil) ? (assingee = json.dictionaryObject!["assingee"] as? String) : (assingee = "Pending...")
+        
+        comment_count = json.dictionaryObject!["comment_count"] as? Int
+        history_count = json.dictionaryObject!["history_count"] as? Int
     }
 }
 

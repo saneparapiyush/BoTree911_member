@@ -14,19 +14,6 @@ import Toast
 
 class LoginViewController: AbstractViewController {
     
-    let testResponse = [
-        "first_name": "as",
-        "last_name": 1,
-        "data": [
-            "user": [
-                "first_name": "",
-                "last_name": "",
-                "email": "sp@gmail.com",
-                "access_token": "f4cb2196eab3fcae80dc"
-            ]
-        ]
-    ] as [String: Any]
-    
     @IBOutlet var txtUserEmail: ThemeTextField!
     @IBOutlet var txtPassword: ThemeTextField!
     @IBOutlet var btnLogin: UIButton!
@@ -59,10 +46,69 @@ class LoginViewController: AbstractViewController {
         userAuthorized()
     }// End btnLoginOnclick()
     @IBAction func btnForgotPasswordOnClick(_ sender: Any) {
-        self.view.makeToast("New Password sent to Registered Email")
+        let alert = UIAlertController(title: "Forgot Password", message: nil, preferredStyle: .alert)
+        
+        alert.addTextField { textField in
+            textField.delegate = self
+            textField.text = ""
+            textField.placeholder = "Please enter user email"
+            textField.keyboardType = .numbersAndPunctuation
+        }
+        
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+            print("Text field: \(textField?.text)")
+            
+            self.forgotPassword(for: (textField?.text)!)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
     }// End btnForgotPasswordOnClick()
     
+    //    MARK: - Helper Method
     
+    func forgotPassword(for email : String) {
+        
+        let parameters = [
+            "email": email,
+            "device_token": UUID().uuidString
+        ]
+        
+        FTProgressIndicator.showProgressWithmessage(getLocalizedString("forgot_password_indicator"), userInteractionEnable: false)
+        
+        do {
+            try Alamofire.request(ComunicateService.Router.ForgotPassword(parameters).asURLRequest()).debugLog().responseJSON(options: [JSONSerialization.ReadingOptions.allowFragments, JSONSerialization.ReadingOptions.mutableContainers])
+            {
+                (response) -> Void in
+                
+                switch response.result
+                {
+                case .success:
+                    if let value = response.result.value
+                    {
+                        let json = JSON(value)
+                        print("Forgot Password Response: \(json)")
+                        
+                        self.configToast(message: "\((json.dictionaryObject!["message"])!)")
+                        self.dismissIndicator()
+                    }
+                    
+                    self.dismissIndicator()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self.dismissIndicator()
+                    self.configToast(message: error.localizedDescription)
+                }
+            }
+        } catch let error{
+            print(error.localizedDescription)
+            self.dismissIndicator()
+            self.configToast(message: error.localizedDescription)
+        }
+    } //End forgotPassword()
+
     //    MARK: Email Validation
     
     func configValidation()
@@ -128,7 +174,7 @@ extension LoginViewController:AuthorizedProtocol {
                 "password": "\(txtPassword.text!)",
                 "device_type":DEVICE_TOKEN
             ],
-            "fcm_token": "dsd"//uuid for iPhone
+            "device_token": UUID().uuidString//uuid for iPhone
         ]
         
         FTProgressIndicator.showProgressWithmessage(getLocalizedString("login_indicator"), userInteractionEnable: false)
@@ -153,6 +199,7 @@ extension LoginViewController:AuthorizedProtocol {
                         if (json.dictionaryObject!["status"] as? Bool)! {
 
                             if self.storeLoginData(json: json["data"]) {
+                                self.dismissIndicator()
                                  self.performSegue(withIdentifier: "showTicketList", sender: self)
                             }
                             
@@ -160,6 +207,7 @@ extension LoginViewController:AuthorizedProtocol {
                             
                         } else {
 //                            print((json.dictionaryObject!["message"])!)
+                            self.dismissIndicator()
                             self.view.makeToast("\((json.dictionaryObject!["message"])!)")
                         }
                     }
@@ -179,7 +227,7 @@ extension LoginViewController:AuthorizedProtocol {
 //       return isLoginAuthorized
     }// End login()
     
-    func loginDataSource(json: JSON) {
+    func loginDataSource(json: JSON) {//unused
         
             let data = json["user"]
       
@@ -197,6 +245,7 @@ extension LoginViewController:AuthorizedProtocol {
         
         let dic = NSMutableDictionary()
         dic.setValue(data["first_name"].rawString()!, forKey: "first_name")
+        dic.setValue(data["user_id"].rawValue, forKey: "user_id")
         dic.setValue(data["last_name"].rawString()!, forKey: "last_name")
         dic.setValue(data["email"].rawString()!, forKey: "email")
         dic.setValue(data["access_token"].rawString()!, forKey: "access_token")
@@ -221,8 +270,8 @@ extension LoginViewController:AuthorizedProtocol {
 //        if txtPassword.validate() && txtUserEmail.validate() {
         
 //            MARK: OFLINE
-//            login()
-            self.performSegue(withIdentifier: "showTicketList", sender: self)
+            login()
+//            self.performSegue(withIdentifier: "showTicketList", sender: self)
 //            MARK: END OFLINE
         
     } //End userAuthorized()
