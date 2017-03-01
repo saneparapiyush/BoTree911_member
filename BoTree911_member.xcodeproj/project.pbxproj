@@ -445,6 +445,7 @@
 				TargetAttributes = {
 					4AF934BF1E55B9E8005E1943 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 7C58JYPZ2J;
 						ProvisioningStyle = Automatic;
 					};
 					4AF934D31E55B9E8005E1943 = {
@@ -838,6 +839,7 @@
 			baseConfigurationReference = 25B7B34BD26AA13C0014993D /* Pods-BoTree911_member.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7C58JYPZ2J;
 				INFOPLIST_FILE = BoTree911_member/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "botree.BoTree911-member";
@@ -852,6 +854,7 @@
 			baseConfigurationReference = CD790CF44FD4D223AA0BB35C /* Pods-BoTree911_member.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7C58JYPZ2J;
 				INFOPLIST_FILE = BoTree911_member/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "botree.BoTree911-member";

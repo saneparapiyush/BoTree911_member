@@ -30,7 +30,7 @@ class LoginViewController: AbstractViewController {
 //            print((user as AnyObject)["email"] as! String)
 //        }
         
-        title = "SIGN IN"
+        title = "Sign In"
         //hideNavigationBar()
         self.navigationItem.setHidesBackButton(true, animated: true)
         configValidation()

@@ -33,10 +33,7 @@ class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeN
         
         style()
         
-        
-        if selectedStatusId != 3 {// Hidden for Unassignee
-            configUnassignee()
-        }
+        configLogTimeOnStatus()
         
 //        carbonTabSwipeNavigation.carbonSegmentedControl?.selectedSegmentIndex = 3
 //        carbonTabSwipeNavigation.currentTabIndex = UInt(selectedIndex)
@@ -91,9 +88,29 @@ class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeN
         carbonTabSwipeNavigation.setNormalColor(UIColor.black.withAlphaComponent(0.6))
     }
     
-    func configUnassignee() {
+    func configLogTimeOnStatus() {
         //For Add navigation bar button
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Time", style: .plain, target: self, action: #selector(btnLogTimeOnClick))
+        
+        let btnLogtime = UIBarButtonItem(title: "Log Time", style: .plain, target: self, action: #selector(btnLogTimeOnClick))
+        
+        switch selectedStatusId {
+            
+        case UNASSIGNEE_ID:
+            break
+            
+        case UNRESOLVED_ID:
+            navigationItem.rightBarButtonItem = btnLogtime
+            
+        case MISSED_ID:
+            break
+            
+        case OLD_ID:
+            navigationItem.rightBarButtonItem = btnLogtime
+            
+        default:
+            navigationItem.rightBarButtonItem = btnLogtime
+        }
+        
     }
     
     //    MARK:- Actions

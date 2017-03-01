@@ -42,7 +42,7 @@ class TicketDetailViewController: AbstractViewController {
         self.navigationItem.setHidesBackButton(true, animated: true)
         
         configUI()
-        configUIUnassignee()
+        configUIOnStatus()
         
         //            MARK: OFLINE
                 getDropDownData()
@@ -242,7 +242,7 @@ class TicketDetailViewController: AbstractViewController {
     
     func configUI() {
         
-        txtSelectProject.text = selectedProject.name
+        txtSelectProject.text = selectedProject?.name
         
         txtViewDescription.textContainerInset = UIEdgeInsetsMake(10, 10, 10, 10)
         
@@ -259,9 +259,26 @@ class TicketDetailViewController: AbstractViewController {
         txtSelectStatus.text = ticket!.status
     }// End configUI()
     
-    func configUIUnassignee() {
-        if selectedStatusId == 3 { // Hidden for Unassignee
-            btnPassTicket.setTitle("Accept Ticket", for: .normal)
+    func configUIOnStatus() {
+        
+        switch selectedStatusId {
+            case UNASSIGNEE_ID:
+                btnEdit.isHidden = true
+                btnPassTicket.setTitle("Accept Ticket", for: .normal)
+            
+            case UNRESOLVED_ID:
+                break
+            
+            case MISSED_ID:
+                btnEdit.isHidden = true
+                btnPassTicket.isHidden = true
+            
+            case OLD_ID:
+                btnEdit.isHidden = true
+                btnPassTicket.isHidden = true
+                
+            default:
+                break
         }
     }
     

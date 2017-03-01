@@ -17,10 +17,15 @@ let themeTextColor = UIColor.darkGray
 let REGEX_EMAIL = "[A-Z0-9a-z._%+-]{3,}+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
 let DEVICE_TOKEN = 1
 
-var selectedProject : Project!
+var selectedProject : Project?
 
 enum AppScreenType: Int {
     case TICKET_LIST_SCREEN_TYPE
 }
 
 let ACCEPTABLE_CHARACTERS = "0123456789."
+
+let UNASSIGNEE_ID = UInt(0)
+let UNRESOLVED_ID = UInt(1)
+let MISSED_ID = UInt(2)
+let OLD_ID = UInt(3)

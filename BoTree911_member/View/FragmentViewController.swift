@@ -34,10 +34,10 @@ class FragmentViewController: AbstractViewController,CarbonTabSwipeNavigationDel
     
     override func viewDidAppear(_ animated: Bool) {
         //            MARK: OFLINE
+        carbonTabSwipeNavigation.removeFromParentViewController()
             getProjectList { (success) in
                 if success {
                     self.getTicketList()
-                    
                 }
             }
         //        setOflineDataSource()
@@ -58,7 +58,7 @@ class FragmentViewController: AbstractViewController,CarbonTabSwipeNavigationDel
         switch index {
         case 0:
             
-            statusKey = "old_tickets"
+            statusKey = "unassigned_tickets"
             
             break
         case 1:
@@ -75,7 +75,7 @@ class FragmentViewController: AbstractViewController,CarbonTabSwipeNavigationDel
             
         case 3:
             
-            statusKey = "unassigned_tickets"
+            statusKey = "old_tickets"
             
             break
             
@@ -126,9 +126,9 @@ class FragmentViewController: AbstractViewController,CarbonTabSwipeNavigationDel
         carbonTabSwipeNavigation.currentTabIndex = UInt(selectedIndex)
         carbonTabSwipeNavigation.insert(intoRootViewController: self)
         
-        for (index, _) in items.enumerated() {
-            carbonTabSwipeNavigation.carbonSegmentedControl!.setWidth(self.view.frame.width / 2.5 , forSegmentAt: index)
-        }
+//        for (index, _) in items.enumerated() {
+//            carbonTabSwipeNavigation.carbonSegmentedControl!.setWidth(self.view.frame.width / 2.5 , forSegmentAt: index)
+//        }
         
     }
     
@@ -138,7 +138,7 @@ class FragmentViewController: AbstractViewController,CarbonTabSwipeNavigationDel
         carbonTabSwipeNavigation.setIndicatorColor(themeColor)
         carbonTabSwipeNavigation.setSelectedColor(themeColor, font: UIFont.boldSystemFont(ofSize: 14))
         
-        carbonTabSwipeNavigation.setTabExtraWidth(30)
+        carbonTabSwipeNavigation.setTabExtraWidth(20)
         
         carbonTabSwipeNavigation.setNormalColor(UIColor.black.withAlphaComponent(0.6))
     }
@@ -216,8 +216,16 @@ extension FragmentViewController: UIPickerViewDelegate, UIPickerViewDataSource, 
         serviceManager.getProjectList { (success, error, json) in
             if success {
                 self.projectListSource = json!
-                selectedProject = self.projectListSource[0]
-                self.txtNavigationTitle.text = self.projectListSource[0].name
+                
+//                selectedProject = self.projectListSource[0]
+//                self.txtNavigationTitle.text = self.projectListSource[0].name
+                
+                if selectedProject != nil {
+                    self.txtNavigationTitle.text = selectedProject?.name
+                } else {
+                    selectedProject = self.projectListSource[0]
+                    self.txtNavigationTitle.text = self.projectListSource[0].name
+                }
                 
                 //                if self.projectListSource.count > 1 {
                 //                    self.txtSelectProject.isEnabled = true
@@ -278,10 +286,10 @@ extension FragmentViewController: UIPickerViewDelegate, UIPickerViewDataSource, 
         items.removeAll()
         //        items = ["To do","In Progress","Resolved","Close","Unassigned"]
         
-        items.append("Old (\(allTickets["old_tickets"].count))")
+        items.append("Unassigned (\(allTickets["unassigned_tickets"].count))")
         items.append("Unresolved (\(allTickets["on_going_tickets"].count))")
         items.append("Missed (\(allTickets["missed_tickets"].count))")
-        items.append("Unassigned (\(allTickets["unassigned_tickets"].count))")
+        items.append("Old (\(allTickets["old_tickets"].count))")
         
         //        for (key, value) in allTickets {
         //            items.append(key + " (\(value.count))")

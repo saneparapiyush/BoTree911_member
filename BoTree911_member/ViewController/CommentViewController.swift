@@ -109,11 +109,12 @@ class CommentViewController: AbstractViewController {
                         let json = JSON(value)
                         print("Comment List Response: \(json)")
                         
-                        if (json.dictionaryObject!["status"] as? Bool)! && json["data"]["comments"].count > 0 {
-//                            self.processGetResponceCommentList(json: json["data"])
-                            self.processGetResponceCommentList(json: json["data"], completionHandler: {
-                                self.dismissIndicator()
-                            })
+                        if (json.dictionaryObject!["status"] as? Bool)! {
+                            if json["data"]["comments"].count > 0 {
+                                self.processGetResponceCommentList(json: json["data"], completionHandler: {
+                                    self.dismissIndicator()
+                                })
+                            }
                         } else {
                             self.view.makeToast("\((json.dictionaryObject!["message"])!)")
                         }
@@ -189,7 +190,7 @@ extension CommentViewController: UITableViewDataSource,UITableViewDelegate {
         return UITableViewAutomaticDimension
     }
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        return 68
     }
     
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -222,7 +223,7 @@ class CommentListCell: UITableViewCell {
     
     func setCellView() {
         
-        print((UserDefaults.standard.value(forKey: "user")! as AnyObject)["user_id"] as! Int)
+//        print((UserDefaults.standard.value(forKey: "user")! as AnyObject)["user_id"] as! Int)
         
         if comment!.user_id! == (UserDefaults.standard.value(forKey: "user")! as AnyObject)["user_id"] as! Int { // change condition based on user detail
             constraintLead.constant = 60
