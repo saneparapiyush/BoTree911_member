@@ -116,7 +116,7 @@ class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeN
     //    MARK:- Actions
     func btnLogTimeOnClick() {
         
-        let alert = UIAlertController(title: "Log Time(Hour)", message: "Please enter Log Time", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Log Time", message: "Enter Log Time must in Hours.", preferredStyle: .alert)
         
         alert.addTextField { textField in
             textField.delegate = self

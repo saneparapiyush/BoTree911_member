@@ -15,7 +15,8 @@ struct ComunicateService {
 //    static let KeyName2 = "KeyName2"
     
     enum Router: URLRequestConvertible {
-        static let baseURLString = "https://botree911.herokuapp.com/"
+//        static let baseURLString = "https://botree911.herokuapp.com/"
+        static let baseURLString = "http://192.168.0.86:3000/"
         static var OAuthToken: String?
         
         case SignIn(Parameters)

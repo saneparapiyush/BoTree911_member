@@ -17,6 +17,7 @@ class Ticket {
     var created_at: String?
     var raised_by: String?
     var assingee: String?
+    var assignee_id: Int?
     var comment_count: Int?
     var history_count: Int?
     
@@ -37,6 +38,7 @@ class Ticket {
         
         ((json.dictionaryObject!["assingee"] as? String) != nil) ? (assingee = json.dictionaryObject!["assingee"] as? String) : (assingee = "Pending...")
         
+        assignee_id = json.dictionaryObject!["assignee_id"] as? Int
         comment_count = json.dictionaryObject!["comment_count"] as? Int
         history_count = json.dictionaryObject!["history_count"] as? Int
     }

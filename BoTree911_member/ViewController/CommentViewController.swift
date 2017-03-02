@@ -18,6 +18,9 @@ class CommentViewController: AbstractViewController {
     @IBOutlet var txtAddComment: UITextField!
     @IBOutlet var btnAddComment: UIButton!
     
+    @IBOutlet var constraintHiddenAddComment: NSLayoutConstraint!
+    
+    
     var ticket: Ticket?
     var commentListSource = [Comment]()
     
@@ -25,6 +28,7 @@ class CommentViewController: AbstractViewController {
         super.viewDidLoad()
         
         btnAddComment.isDisableConfig()
+        configUI()
         NotificationCenter.default.addObserver(self, selector: #selector(textChanged(sender:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
     }// End viewDidLoad()
 
@@ -163,6 +167,14 @@ class CommentViewController: AbstractViewController {
         }
         else {
             btnAddComment.isDisableConfig()
+        }
+    }
+    
+    func configUI() {
+        if ticket?.assignee_id == (UserDefaults.standard.value(forKey: "user")! as AnyObject)["user_id"] as? Int {
+            constraintHiddenAddComment.constant = 12
+        } else {
+            constraintHiddenAddComment.constant = -44
         }
     }
 }

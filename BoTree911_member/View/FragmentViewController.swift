@@ -138,7 +138,7 @@ class FragmentViewController: AbstractViewController,CarbonTabSwipeNavigationDel
         carbonTabSwipeNavigation.setIndicatorColor(themeColor)
         carbonTabSwipeNavigation.setSelectedColor(themeColor, font: UIFont.boldSystemFont(ofSize: 14))
         
-        carbonTabSwipeNavigation.setTabExtraWidth(20)
+        carbonTabSwipeNavigation.setTabExtraWidth(15)
         
         carbonTabSwipeNavigation.setNormalColor(UIColor.black.withAlphaComponent(0.6))
     }
