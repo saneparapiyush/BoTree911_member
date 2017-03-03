@@ -159,7 +159,7 @@ class FragmentViewController: AbstractViewController,CarbonTabSwipeNavigationDel
         view.addSubview(imgdropDown)
         view.addSubview(txtNavigationTitle)
         
-        self.navigationItem.titleView = view
+        self.navigationItem.titleView = txtNavigationTitle// set view as titleView, if you need to add image and text both
     }
     
     func configPicker() {
@@ -185,7 +185,7 @@ extension FragmentViewController: UIPickerViewDelegate, UIPickerViewDataSource, 
 //            project = projectListSource[row]
         
         selectedProject = projectListSource[row]
-        txtNavigationTitle.text = projectListSource[row].name
+        txtNavigationTitle.text = projectListSource[row].name! + "  ▽"
         txtNavigationTitle.resignFirstResponder()
         
         getTicketList()
@@ -203,7 +203,7 @@ extension FragmentViewController: UIPickerViewDelegate, UIPickerViewDataSource, 
     
     func textFieldDidBeginEditing(_ textField: UITextField)
     {
-        picker.selectRow(0, inComponent: 0, animated: true)
+//        picker.selectRow(0, inComponent: 0, animated: true)
         picker.reloadAllComponents()
     }
     
@@ -221,10 +221,10 @@ extension FragmentViewController: UIPickerViewDelegate, UIPickerViewDataSource, 
 //                self.txtNavigationTitle.text = self.projectListSource[0].name
                 
                 if selectedProject != nil {
-                    self.txtNavigationTitle.text = selectedProject?.name
+                    self.txtNavigationTitle.text = (selectedProject?.name)! + "  ▽"
                 } else {
                     selectedProject = self.projectListSource[0]
-                    self.txtNavigationTitle.text = self.projectListSource[0].name
+                    self.txtNavigationTitle.text = self.projectListSource[0].name! + "  ▽"
                 }
                 
                 //                if self.projectListSource.count > 1 {

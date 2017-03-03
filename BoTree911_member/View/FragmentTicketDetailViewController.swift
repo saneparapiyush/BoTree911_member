@@ -122,7 +122,7 @@ class FragmentTicketDetailViewController: AbstractViewController,CarbonTabSwipeN
             textField.delegate = self
             textField.text = ""
             textField.placeholder = "e.g. 3.5 or 4"
-            textField.keyboardType = .numbersAndPunctuation
+            textField.keyboardType = .decimalPad
         }
         
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (_) in

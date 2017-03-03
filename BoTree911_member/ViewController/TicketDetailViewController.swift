@@ -113,6 +113,9 @@ class TicketDetailViewController: AbstractViewController {
             if ticketStatusDetail.status_value! != 4 { // Hide Close Status 
                 ticketStatus.append(ticketStatusDetail)
             }
+            if ticketStatusDetail.status_value! == ticket?.status_id {
+                txtSelectStatus.text = ticketStatusDetail.ticket_status_name
+            }
         }
         
         //        for (key, value) in projects as! JSON {
@@ -121,7 +124,6 @@ class TicketDetailViewController: AbstractViewController {
         
         //        txtSelectStatus.text = (isEdit)! ? (ticket?.status) : (arrStatus.allKeys(for: 1)[0] as! String)
         
-        txtSelectStatus.text = ticket?.status
     } // End procssGetResponceProjectList
     
     func editTicket() {
@@ -256,7 +258,7 @@ class TicketDetailViewController: AbstractViewController {
         
         txtTitleName.text = ticket!.name
         txtViewDescription.text = ticket!.description
-        txtSelectStatus.text = ticket!.status
+//        txtSelectStatus.text = ticket!.status
     }// End configUI()
     
     func configUIOnStatus() {
@@ -343,7 +345,7 @@ extension TicketDetailViewController: UIPickerViewDelegate, UIPickerViewDataSour
     
     func textFieldDidBeginEditing(_ textField: UITextField)
     {
-        picker.selectRow(0, inComponent: 0, animated: true)
+//        picker.selectRow(0, inComponent: 0, animated: true)
         
         picker.reloadAllComponents()
     }

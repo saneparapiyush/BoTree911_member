@@ -14,6 +14,7 @@ class Ticket {
     var name: String?
     var description: String?
     var status: String?
+    var status_id: Int?
     var created_at: String?
     var raised_by: String?
     var assingee: String?
@@ -27,6 +28,7 @@ class Ticket {
         name = json.dictionaryObject!["name"] as? String
         description = json.dictionaryObject!["description"] as? String
         status = json.dictionaryObject!["status"] as? String
+        status_id = json.dictionaryObject!["status_id"] as? Int
         created_at = json.dictionaryObject!["created_at"] as? String
         raised_by = json.dictionaryObject!["raised_by"] as? String
         
