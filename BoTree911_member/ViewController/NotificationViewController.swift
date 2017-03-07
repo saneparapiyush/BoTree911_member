@@ -27,8 +27,8 @@ class NotificationViewController: AbstractViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         //            MARK: OFLINE
-//        getNotificationList()
-                setOflineDataSource()
+        getNotificationList()
+//                setOflineDataSource()
         //            MARK: END OFLINE
         
     }//End viewWillAppear()

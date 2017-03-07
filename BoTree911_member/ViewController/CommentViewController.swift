@@ -20,7 +20,6 @@ class CommentViewController: AbstractViewController {
     
     @IBOutlet var constraintHiddenAddComment: NSLayoutConstraint!
     
-    
     var ticket: Ticket?
     var commentListSource = [Comment]()
     
@@ -32,14 +31,21 @@ class CommentViewController: AbstractViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(textChanged(sender:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
     }// End viewDidLoad()
 
-    override func viewWillAppear(_ animated: Bool) {
-        
+    override func viewDidAppear(_ animated: Bool) {
         //            MARK: OFLINE
-                getCommentList()
-//        setOflineDataSource()
+        getCommentList()
+        //        setOflineDataSource()
         //            MARK: END OFLINE
         
-    }//End viewWillAppear()
+    } // End viewDidAppear()
+//    override func viewWillAppear(_ animated: Bool) {
+//        
+//        //            MARK: OFLINE
+//                getCommentList()
+////        setOflineDataSource()
+//        //            MARK: END OFLINE
+//        
+//    }//End viewWillAppear()
     
 //    MARK: - Action
     @IBAction func btnAddCommentOnClick(_ sender: Any) {

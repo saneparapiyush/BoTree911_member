@@ -67,14 +67,14 @@ class leftMenuViewController: UIViewController,UITableViewDataSource,UITableView
         case 0:// Tickets
             let vc = AppRouter.sharedRouter().getViewController("FragmentViewController") as! FragmentViewController
            
-            vc.selectedIndex = 0
+            vc.selectedIndex = Int(UNRESOLVED_ID)
             SlideNavigationController.sharedInstance().pushViewController(vc, animated: false)
            
             break
             
         case 1:// Unassigned Tickets
             let vc = AppRouter.sharedRouter().getViewController("FragmentViewController") as! FragmentViewController
-            vc.selectedIndex = 3
+            vc.selectedIndex = Int(UNASSIGNEE_ID)
 
             SlideNavigationController.sharedInstance().pushViewController(vc, animated: false)
                        

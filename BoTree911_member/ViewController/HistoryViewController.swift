@@ -25,13 +25,20 @@ class HistoryViewController: AbstractViewController {
         
     } // End viewDidLoad()
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         //            MARK: OFLINE
         getHistoryList()
-//        setOflineDataSource()
+        //        setOflineDataSource()
         //            MARK: END OFLINE
-
-    }//End viewWillAppear()
+    } // End viewDidAppear()
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        //            MARK: OFLINE
+//        getHistoryList()
+////        setOflineDataSource()
+//        //            MARK: END OFLINE
+//
+//    }//End viewWillAppear()
     
     
 //    MARK:- Helper Method

@@ -23,8 +23,7 @@ class TicketListViewController: AbstractViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        
+
     }// End viewDidLoad()
     
     override func viewDidAppear(_ animated: Bool) {

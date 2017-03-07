@@ -273,7 +273,7 @@ extension FragmentViewController: UIPickerViewDelegate, UIPickerViewDataSource, 
                     self.view.makeToast(error.localizedDescription)
                 }
             }
-        } catch let error{
+        } catch let error {
             print(error)
             self.dismissIndicator()
             self.view.makeToast(error.localizedDescription)

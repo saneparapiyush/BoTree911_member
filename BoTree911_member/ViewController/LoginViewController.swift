@@ -22,17 +22,9 @@ class LoginViewController: AbstractViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        
-//        if let user = UserDefaults.standard.value(forKey: "user") {
-//            print(user)
-//            print((user as AnyObject)["email"] as! String)
-//        }
         
         title = "Sign In"
-        //hideNavigationBar()
-        self.navigationItem.setHidesBackButton(true, animated: true)
+        hideNavigationBar()
         configValidation()
         configPasswordHideShow()
         textFeildReturnUIConfig()
@@ -45,6 +37,9 @@ class LoginViewController: AbstractViewController {
     @IBAction func btnLoginOnclick(_ sender: Any) {
         userAuthorized()
     }// End btnLoginOnclick()
+    
+    var btnOkay = UIAlertAction()
+    
     @IBAction func btnForgotPasswordOnClick(_ sender: Any) {
         let alert = UIAlertController(title: "Forgot Password", message: nil, preferredStyle: .alert)
         
@@ -52,20 +47,33 @@ class LoginViewController: AbstractViewController {
             textField.delegate = self
             textField.text = ""
             textField.placeholder = "Please enter user email"
-            textField.keyboardType = .numbersAndPunctuation
+            textField.keyboardType = .emailAddress
+            textField.addTarget(self, action: #selector(self.textChanged(_:)), for: .editingChanged)
         }
         
-        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { [weak alert] (_) in
+        btnOkay = UIAlertAction(title: "Okay", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
             print("Text field: \(textField?.text)")
             
+            if !(textField?.text!.isValidEmail())! {
+                self.configToast(message: "Please enter valid Email")
+                return
+            }
+            
             self.forgotPassword(for: (textField?.text)!)
-        }))
+        })
         
+        alert.addAction(btnOkay)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        btnOkay.isEnabled = false
         
         self.present(alert, animated: true, completion: nil)
     }// End btnForgotPasswordOnClick()
+    
+    func textChanged(_ sender:UITextField) {
+        self.btnOkay.isEnabled = sender.hasText
+    }// End textChanged()
     
     //    MARK: - Helper Method
     
@@ -114,7 +122,7 @@ class LoginViewController: AbstractViewController {
     func configValidation()
     {
 //        txtUserEmail.addRegx(REGEX_EMAIL, withMsg: getLocalizedString("invalid_email"))
-    }// End isValidEmail
+    } // End isValidEmail
 }
 
 //    MARK: KeyBoard Return Key Configuration
@@ -166,7 +174,7 @@ extension LoginViewController : UITextFieldDelegate {
 extension LoginViewController:AuthorizedProtocol {
     
 //    MARK:- Helper Method
-    func login(){
+    func login() {
         
         let parameters: Parameters = [
             "user": [
@@ -208,7 +216,8 @@ extension LoginViewController:AuthorizedProtocol {
                         } else {
 //                            print((json.dictionaryObject!["message"])!)
                             self.dismissIndicator()
-                            self.view.makeToast("\((json.dictionaryObject!["message"])!)")
+//                            self.view.makeToast("\((json.dictionaryObject!["message"])!)")
+                            self.configToast(message: "\((json.dictionaryObject!["message"])!)")
                         }
                     }
                     
@@ -216,31 +225,19 @@ extension LoginViewController:AuthorizedProtocol {
                 case .failure(let error):
                     print(error.localizedDescription)
                     self.dismissIndicator()
-                    self.view.makeToast(error.localizedDescription)
+                    self.configToast(message: error.localizedDescription)
                 }
             }
         } catch let error{
             print(error.localizedDescription)
             self.dismissIndicator()
-            self.view.makeToast(error.localizedDescription)
+            self.configToast(message: error.localizedDescription)
         }
 //       return isLoginAuthorized
     }// End login()
     
-    func loginDataSource(json: JSON) {//unused
-        
-            let data = json["user"]
-      
-            let dic = NSMutableDictionary()
-            dic.setValue(data["first_name"].rawString()!, forKey: "first_name")
-            dic.setValue(data["last_name"].rawString()!, forKey: "last_name")
-            dic.setValue(data["email"].rawString()!, forKey: "email")
-            dic.setValue(data["access_token"].rawString()!, forKey: "access_token")
-        
-            UserDefaults.standard.set(dic, forKey: "user")
-    }// loginDataSource()
-    
     func storeLoginData(json: JSON) -> Bool {
+        
         let data = json["user"]
         
         let dic = NSMutableDictionary()
@@ -251,28 +248,32 @@ extension LoginViewController:AuthorizedProtocol {
         dic.setValue(data["access_token"].rawString()!, forKey: "access_token")
         
         UserDefaults.standard.set(dic, forKey: "user")
-        UserDefaults.standard.set(txtPassword.text!, forKey: "isLogin")
+//        UserDefaults.standard.set(txtPassword.text!, forKey: "isLogin")
         UserDefaults.standard.set(true, forKey: "isLogin")
         
         if UserDefaults.standard.value(forKey: "isLogin") != nil {
             return true
         }
         
-//        if keychain.set(txtPassword.text!, forKey: "password") {
-//            return true
-//        }
-        
         return false
-    }//storeLoginData()
+    }// end storeLoginData()
     
-    //    MARK: Store User Information
     func userAuthorized() {
-//        if txtPassword.validate() && txtUserEmail.validate() {
         
-//            MARK: OFLINE
+        if !txtUserEmail.hasText || !txtPassword.hasText {
+            self.configToast(message: "Please enter detail")
+            return
+        }
+        
+        if !txtUserEmail.text!.isValidEmail() {
+            self.configToast(message: "Please enter valid Email")
+            return
+        }
+        
+        //            MARK: OFLINE
             login()
-//            self.performSegue(withIdentifier: "showTicketList", sender: self)
-//            MARK: END OFLINE
+        //            self.performSegue(withIdentifier: "showTicketList", sender: self)
+        //            MARK: END OFLINE
         
     } //End userAuthorized()
 }

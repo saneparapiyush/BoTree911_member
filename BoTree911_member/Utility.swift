@@ -58,6 +58,12 @@ extension String {
         formatterString.dateFormat = "MM-dd-yyyy"
         return formatterString.string(from: dateFormat!)
     }
+    
+    func isValidEmail() -> Bool {
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", REGEX_EMAIL)
+        return emailTest.evaluate(with: self)
+    }
 }
 
 //  MARK: UIButton Enable Disale Configution
